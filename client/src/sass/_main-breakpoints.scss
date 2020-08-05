@@ -1,0 +1,232 @@
+@include breakpoint-up(md) {
+  .page-header {
+    .main-nav {
+      &__logo {
+        height: 90%;
+      }
+
+      &__menu {
+        width: 60%;
+      }
+    }
+  }
+}
+
+@include breakpoint-up(lg) {
+  .page-header {
+    .main-nav {
+      &__menu {
+        position: static;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+
+        &.hide {
+          transform: translateX(0);
+        }
+
+        &-header {
+          display: none;
+        }
+
+        &-contact {
+          position: absolute;
+          top: 5px;
+          right: 0;
+          padding: 0;
+          background-color: transparent;
+          font-size: 0.7rem;
+        }
+
+        &-list {
+          @include flexCenter();
+          justify-content: flex-end;
+          height: 100%;
+          font-size: 0.7rem;
+          overflow: hidden;
+        }
+
+        &-link {
+          width: auto;
+          padding: 0 0.4rem;
+          font-weight: bold;
+          text-transform: uppercase;
+
+          &:hover {
+            color: $main-yellow;
+          }
+
+          &--login {
+            margin: 0 0 0 1rem;
+            padding: 0.2rem 1rem;
+            font-size: 1rem;
+          }
+        }
+
+        .dropdown {
+          position: static;
+          display: inline-block;
+
+          &__control {
+            width: auto;
+            background-color: transparent;
+
+            &.hide {
+              & + .dropdown__panel {
+                max-height: 0;
+                border: none;
+              }
+            }
+          }
+
+          &__panel {
+            position: absolute;
+            width: 160px;
+            background-color: white;
+            border: 1px solid $light-grey;
+          }
+
+          &__item {
+            padding: 0.4rem;
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: $main-black;
+            text-align: left;
+
+            &:hover {
+              color: $main-red;
+            }
+
+            &:not(:last-child) {
+              border-bottom: 1px solid $light-grey;
+            }
+          }
+        }
+      }
+
+      &__collapse-button {
+        display: none;
+      }
+    }
+  }
+
+  .main-container {
+    min-height: calc(100vh - 280px - 5rem);
+  }
+
+  .page-footer {
+    .container {
+      flex-direction: row;
+      height: 200px;
+      text-align: left;
+    }
+
+    .section-header {
+      display: block;
+      @include Lato();
+
+      h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+    }
+
+    .info-block {
+      display: block;
+
+      .info {
+        margin: 0;
+      }
+    }
+
+    .left,
+    .right {
+      height: 100%;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      flex: 1 0 50%;
+      order: 1;
+
+      &__nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .footer-nav {
+          &__link {
+            display: inline-block;
+            margin-bottom: 0.3rem;
+            color: white;
+            font-size: 0.9rem;
+
+            &.active {
+              color: $main-yellow;
+            }
+
+            &:hover {
+              color: $main-yellow;
+              text-decoration: none;
+            }
+
+            &--barang {
+              color: $main-yellow;
+            }
+          }
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex: 1 0 50%;
+      order: 2;
+      margin-bottom: 0;
+      border-left: 1px solid white;
+
+      .contact {
+        &__info {
+          &__address {
+            .info__logo {
+              margin-right: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint-up(xl) {
+  .page-header {
+    .main-nav {
+      &__logo {
+        height: 100%;
+      }
+
+      &__menu {
+        &-list {
+          font-size: 0.8rem;
+        }
+
+        &-link {
+          &--login {
+            padding: 0.2rem 1.5rem;
+          }
+        }
+
+        .dropdown {
+          &__item {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}

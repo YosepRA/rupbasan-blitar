@@ -1,3 +1,5 @@
+const slugify = require('slugify');
+
 // Clean all whitespaces from a string.
 function cleanWhitespace(string) {
   return string.replace(/\s/g, '');
@@ -13,9 +15,18 @@ function insensitiveRegex(string) {
   return new RegExp(escapeRegex(string), 'i');
 }
 
+// Strict string regex.
+function strictInsensitiveRegex(string) {
+  return new RegExp(`^${string}$`, 'i');
+}
+
 // Create an array of Regular Expressions from comma-separated string for $in MongoDB query.
 function inRegex(string) {
-  return string.split(',').map(query => insensitiveRegex(query));
+  return string
+    .split(',')
+    .map(query =>
+      query ? strictInsensitiveRegex(query) : insensitiveRegex(query)
+    );
 }
 
 // getFilters(object, array) → Object
@@ -30,10 +41,44 @@ function getFiltersFromQuery(query, excluded) {
   return filters;
 }
 
+// Convert 'camelCase' to 'Camel Case'.
+function camelToSentence(camelString) {
+  return camelString
+    .replace(/([A-Z])/g, ' $1')
+    .replace(/^./, match => match.toUpperCase());
+}
+
+function getFilterKeys(filterFields, data) {
+  let filterKeys = {};
+  let slugOptions = {
+    replacement: '',
+    lower: true,
+  };
+
+  filterFields.forEach(filterField => {
+    filterKeys[filterField] = {
+      title: camelToSentence(filterField),
+      keys: [],
+    };
+    data.forEach(d => {
+      let key = d[filterField];
+      const { keys } = filterKeys[filterField];
+      if (!keys.some(({ name }) => name === key)) {
+        keys.push({
+          name: key,
+          slug: slugify(key, slugOptions),
+        });
+      }
+    });
+  });
+  return filterKeys;
+}
+
 module.exports = {
   cleanWhitespace,
   escapeRegex,
   insensitiveRegex,
   inRegex,
   getFiltersFromQuery,
+  getFilterKeys,
 };

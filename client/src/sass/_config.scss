@@ -1,0 +1,54 @@
+$main-red: #a00e11;
+$main-blue: #032741;
+$main-yellow: #ffff01;
+$main-black: #252525;
+$light-grey: #ebebeb;
+$medium-grey: #b7b7b7;
+$dark-grey: #707070;
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin all200ms {
+  transition: all 200ms ease-out;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+
+// BREAKPOINTS
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+@mixin breakpoint-up($size) {
+  @if $size == sm {
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 576px) {
+      @content;
+    }
+  } @else if $size == md {
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $size == lg {
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) {
+      @content;
+    }
+  } @else if $size == xl {
+    // Extra large devices (large desktops, 1200px and up)
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}
+
+@mixin Lato {
+  font-family: 'Lato', 'Open Sans', 'Segoe UI', sans-serif;
+}
+
+@mixin OpenSans {
+  font-family: 'Open Sans', 'Lato', 'Segoe UI', sans-serif;
+}
