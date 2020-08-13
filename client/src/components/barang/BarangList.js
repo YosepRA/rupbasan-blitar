@@ -26,11 +26,11 @@ export class BarangList extends Component {
                   <div className="card barang__card">
                     <div className="barang__image">
                       <Link
-                        to={`/barang/detail/${slugify(nama)}`}
+                        to={`/barang/detail/${_id}/${slugify(nama)}`}
                         className="barang__image__link"
                       >
                         <img
-                          src={gambar[0]}
+                          src={gambar[0].url}
                           className="card-img-top"
                           alt={nama}
                         />
@@ -42,7 +42,7 @@ export class BarangList extends Component {
                       </div>
                       <div className="barang__nama">
                         <Link
-                          to={`/barang/detail/${slugify(nama)}`}
+                          to={`/barang/detail/${_id}/${slugify(nama)}`}
                           className="barang__link"
                         >
                           {nama}
@@ -65,7 +65,10 @@ export class BarangList extends Component {
           </div>
         </section>
 
-        <Pagination {...this.props} />
+        <Pagination
+          {...this.props}
+          baseUrl={`/barang/${this.props.match.params.instansi}`}
+        />
       </Fragment>
     );
   }

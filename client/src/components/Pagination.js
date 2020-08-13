@@ -43,8 +43,7 @@ export class Pagination extends Component {
 
   getNavigationLink(pageNum) {
     // Make this dynamic based on React router props.
-    const instansi = this.props.match.params.instansi;
-    return `/barang/${instansi}/${pageNum}`;
+    return `${this.props.baseUrl}/${pageNum}`;
   }
 
   render() {

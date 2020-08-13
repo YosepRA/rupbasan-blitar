@@ -52,3 +52,21 @@ $dark-grey: #707070;
 @mixin OpenSans {
   font-family: 'Open Sans', 'Lato', 'Segoe UI', sans-serif;
 }
+
+@mixin buttonAnimation($color, $darken-value) {
+  @include all200ms();
+
+  &:hover {
+    color: darken($color, $darken-value);
+  }
+}
+
+@mixin imageFillWidth {
+  max-width: 100%;
+  height: auto;
+}
+
+@mixin imageFillHeight {
+  width: auto;
+  max-height: 100%;
+}

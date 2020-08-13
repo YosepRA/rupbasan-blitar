@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../logo-01.svg';
+import logo from '../assets/logo-01.svg';
 import { ToggleLink } from './ToggleLink';
 import { Dropdown } from './Dropdown';
+import { DataTypes } from './data/Types';
+import { Urls } from './data/Urls';
 
 export class Header extends Component {
   constructor(props) {
@@ -70,29 +72,75 @@ export class Header extends Component {
               <Dropdown
                 list={this.props.instansi && this.props.instansi.keys}
                 controlLabel="Instansi Penitip"
+                baseUrl="/barang"
               />
               <Dropdown
                 list={[
-                  { name: 'Kejari Blitar', slug: 'kejariblitar' },
-                  { name: 'Polres Blitar', slug: 'polresblitar' },
-                  { name: 'Polres Blitar Kota', slug: 'polresblitarkota' },
+                  {
+                    name: 'Struktur Organisasi',
+                    slug: `${Urls[`${DataTypes.PROFIL}_STRUKTUR_ORGANISASI`]}`,
+                  },
+                  {
+                    name: 'Sejarah Rupbasan',
+                    slug: `${Urls[`${DataTypes.PROFIL}_SEJARAH_RUPBASAN`]}`,
+                  },
+                  {
+                    name: 'Tugas Pokok dan Fungsi',
+                    slug: `${
+                      Urls[`${DataTypes.PROFIL}_TUGAS_POKOK_DAN_FUNGSI`]
+                    }`,
+                  },
+                  {
+                    name: 'Dasar Hukum',
+                    slug: `${Urls[`${DataTypes.PROFIL}_DASAR_HUKUM`]}`,
+                  },
+                  {
+                    name: 'Standar Operasi Prosedur (SOP)',
+                    slug: `${Urls[`${DataTypes.PROFIL}_SOP`]}`,
+                  },
                 ]}
                 controlLabel="Profil"
+                baseUrl="/profil"
               />
               <Dropdown
                 list={[
-                  { name: 'Kejari Blitar', slug: 'kejariblitar' },
-                  { name: 'Polres Blitar', slug: 'polresblitar' },
-                  { name: 'Polres Blitar Kota', slug: 'polresblitarkota' },
+                  {
+                    name:
+                      'Syarat Penerimaan Benda Sitaan dan Barang Rampasan Negara',
+                    slug: `${
+                      Urls[`${DataTypes.INFORMASI}_SYARAT_PENERIMAAN_BENDA`]
+                    }`,
+                  },
+                  {
+                    name:
+                      'Prosedur Administrasi Mutasi Benda Sitaan Negara (Basan)',
+                    slug: `${
+                      Urls[
+                        `${DataTypes.INFORMASI}_PROSEDUR_ADMINISTRASI_MUTASI`
+                      ]
+                    }`,
+                  },
+                  {
+                    name:
+                      'Syarat Pengeluaran Benda Sitaan Negara dan Barang Rampasan Negara Setalah Adanya Putusan Pengadilan',
+                    slug: `${
+                      Urls[`${DataTypes.INFORMASI}_SYARAT_PENGELUARAN_BENDA`]
+                    }`,
+                  },
+                  {
+                    name: 'Layanan Pengaduan',
+                    slug: `${Urls[`${DataTypes.INFORMASI}_LAYANAN_PENGADUAN`]}`,
+                  },
                 ]}
                 controlLabel="Informasi"
+                baseUrl="/informasi"
               />
               <ToggleLink to="/artikel">Artikel</ToggleLink>
               <ToggleLink
-                to="/login"
+                to="/admin"
                 className="main-nav__menu-link--login btn"
               >
-                Login
+                Admin
               </ToggleLink>
             </div>
           </div>

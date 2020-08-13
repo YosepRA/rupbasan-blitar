@@ -15,6 +15,7 @@ export class ControlPageSize extends Component {
 
   handleSubmit = () => {
     this.props.togglePanel('');
+    this.props.goBackToPageOne();
     this.props.setPageSize(this.state.pageSize);
   };
 

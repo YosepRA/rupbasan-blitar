@@ -1,0 +1,167 @@
+.page-admin {
+  .section-title {
+    margin-bottom: 1rem;
+
+    h2 {
+      @include Lato();
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+  }
+
+  .admin-nav {
+    margin-bottom: 2rem;
+
+    nav {
+      display: flex;
+      justify-content: center;
+
+      a {
+        display: inline-block;
+        margin: 0 0.5rem;
+        background-color: $main-blue;
+        color: white;
+        font-size: 1.1rem;
+        @include buttonAnimation(white, 20);
+
+        &.active {
+          background-color: $main-red;
+        }
+      }
+    }
+  }
+
+  .summary {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $medium-grey;
+
+    &__table {
+      font-size: 0.85rem;
+    }
+
+    &__grand-total-row {
+      border-top: 1px solid #000;
+
+      &__title {
+        font-weight: 700;
+        text-align: right;
+      }
+
+      &__data {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .management {
+    &__title {
+      margin-bottom: 1.6rem;
+    }
+
+    .search {
+      margin: 0 auto 1.2rem auto;
+    }
+
+    &__controls {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid $medium-grey;
+    }
+
+    .controls {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    &__barang-baru {
+      width: 200px;
+
+      a {
+        background-color: $main-blue;
+        color: white;
+        @include buttonAnimation(white, 20);
+      }
+    }
+
+    &__table {
+      max-height: 500px;
+      overflow-y: auto;
+      font-size: 0.85rem;
+    }
+
+    .data {
+      &__nomor-register {
+        text-transform: uppercase;
+      }
+
+      &__control {
+        text-align: center;
+      }
+
+      &__control-btn {
+        padding: 0.2rem 0.5rem;
+      }
+
+      &__edit-btn {
+        background-color: $main-yellow;
+        @include all200ms();
+
+        &:hover {
+          background-color: darken($main-yellow, 5);
+        }
+      }
+
+      &__delete-btn {
+        background-color: $main-red;
+        color: white;
+
+        &:hover {
+          background-color: darken($main-red, 5);
+        }
+      }
+    }
+  }
+}
+
+// BREAKPOINTS
+@include breakpoint-up(md) {
+  .page-admin {
+    .summary {
+      &__table {
+        font-size: 1rem;
+      }
+    }
+
+    .management {
+      &__table {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@include breakpoint-up(lg) {
+  .page-admin {
+    .admin-nav {
+      height: 460px;
+
+      nav {
+        flex-direction: column;
+
+        a {
+          margin: 0 0 1rem;
+        }
+      }
+    }
+
+    .management {
+      .search {
+        margin: 0 auto 1.6rem auto;
+      }
+    }
+  }
+}

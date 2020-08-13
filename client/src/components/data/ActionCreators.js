@@ -1,5 +1,6 @@
 import { ActionTypes, DataTypes } from './Types';
 import { RestDataSource } from './RestDataSource';
+import { Urls } from './Urls';
 
 const dataSource = new RestDataSource();
 
@@ -42,4 +43,25 @@ export const search = searchKey => ({
 
 export const resetParameters = () => ({
   type: ActionTypes.RESET_PARAMETERS,
+});
+
+export const getBarangCount = () => ({
+  type: ActionTypes.DATA_GET_BARANG_COUNT,
+  payload: dataSource.getRequest(DataTypes.BARANG_COUNT).then(result => ({
+    data: result.data,
+  })),
+});
+
+export const getBarangDetail = id => ({
+  type: ActionTypes.DATA_GET_BARANG_DETAIL,
+  payload: dataSource
+    .sendRequest('get', `${Urls[DataTypes.BARANG]}/${id}`)
+    .then(result => ({
+      data: result.data,
+    })),
+});
+
+export const setLoadingState = state => ({
+  type: ActionTypes.LOADING,
+  payload: state,
 });

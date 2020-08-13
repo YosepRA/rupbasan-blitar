@@ -41,7 +41,7 @@ export class Dropdown extends Component {
               <ToggleLink
                 key={name}
                 className="main-nav__menu-link dropdown__item"
-                to={`/barang/${slug}`}
+                to={`${this.props.baseUrl}/${slug}`}
               >
                 {name}
               </ToggleLink>

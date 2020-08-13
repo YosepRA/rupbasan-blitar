@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { filterPageFromUrl } from '../helpers';
 
 export class PageControls extends Component {
   constructor(props) {
@@ -14,6 +15,12 @@ export class PageControls extends Component {
       activePanel: panelName === this.state.activePanel ? '' : panelName,
     });
 
+  goBackToPageOne = () => {
+    let currentUrl = this.props.match.url;
+    let currentPage = this.props.match.params.page;
+    this.props.history.push(filterPageFromUrl(currentUrl, currentPage));
+  };
+
   render() {
     return (
       <section className="controls btn-group">
@@ -21,6 +28,7 @@ export class PageControls extends Component {
           React.cloneElement(ChildComponent, {
             togglePanel: this.togglePanel,
             activePanel: this.state.activePanel,
+            goBackToPageOne: this.goBackToPageOne,
             ...this.props,
           })
         )}

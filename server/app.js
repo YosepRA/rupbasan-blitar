@@ -5,16 +5,21 @@ const morgan = require('morgan');
 
 const app = express();
 
+require('dotenv').config();
+
 // Routes.
-const APIRoutes = require('./routes/api');
+const barangRoutes = require('./routes/barang');
+const filtersRoutes = require('./routes/filters');
+const artikelRoutes = require('./routes/artikel');
 
 const seedDB = require('./seeds');
 
 // DB setup.
-mongoose.connect('mongodb://localhost:27017/rupbasan_blitar', {
+mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
+  useFindAndModify: false,
 });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Database connection error: '));
@@ -24,19 +29,12 @@ db.on('open', () => console.log('Successfully connected to the Database.'));
 app.set('port', process.env.PORT || 3500);
 app.use(cors());
 app.use(morgan('dev'));
-app.use('/api', APIRoutes);
+app.use('/api/barang', barangRoutes);
+app.use('/api/filters', filtersRoutes);
+app.use('/api/artikel', artikelRoutes);
 
 // DB seeding
 // seedDB();
-
-// ROUTES
-app.get('/', async (req, res) => {
-  try {
-    res.send('Root');
-  } catch (err) {
-    console.error(err);
-  }
-});
 
 app.listen(app.get('port'), () => {
   console.log(`Server is listening on port ${app.get('port')}...`);

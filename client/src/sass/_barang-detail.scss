@@ -1,0 +1,91 @@
+.page-barang-detail {
+  .gambar {
+    flex: 0;
+    width: 75%;
+    margin-bottom: 2rem;
+
+    &__preview {
+      margin-bottom: 1rem;
+
+      &-image {
+        text-align: center;
+
+        img {
+          display: inline-block;
+          max-width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+    &__carousel {
+      &-image {
+        height: 70px;
+        text-align: center;
+
+        img {
+          display: inline-block;
+          width: auto;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .info {
+    &__title {
+      margin-bottom: 0.6rem;
+      padding: 0 0.75rem;
+
+      h2 {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+/* ======================================================================================================== */
+
+@include breakpoint-up(sm) {
+  .page-barang-detail {
+    .gambar {
+      &__carousel {
+        &-image {
+          height: 80px;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint-up(md) {
+  .page-barang-detail {
+    .main-container {
+      max-width: 70%;
+    }
+  }
+}
+
+@include breakpoint-up(lg) {
+  .page-barang-detail {
+    .main-container {
+      max-width: 960px;
+    }
+  }
+}
+
+@include breakpoint-up(xl) {
+  .page-barang-detail {
+    .main-container {
+      max-width: 1140px;
+    }
+
+    .gambar {
+      &__carousel {
+        &-image {
+          height: 100px;
+        }
+      }
+    }
+  }
+}

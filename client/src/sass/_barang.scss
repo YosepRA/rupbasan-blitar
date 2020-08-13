@@ -1,13 +1,9 @@
 .page-barang {
-  .search {
-    margin: 0 auto 2rem auto;
-  }
-
   .barang {
     margin-bottom: 2rem;
 
     &__column {
-      height: 340px;
+      height: 360px;
       margin-bottom: 1rem;
     }
 
@@ -69,13 +65,6 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-  }
-
-  .search-result-message {
-    h2 {
-      font-size: 1.6rem;
-      text-align: center;
     }
   }
 }

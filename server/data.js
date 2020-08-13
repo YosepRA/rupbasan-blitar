@@ -1,5 +1,9 @@
 const faker = require('faker');
 const { romanize } = require('@ionaru/romanize');
+const util = require('util');
+const crypto = require('crypto');
+
+const randomBytes = util.promisify(crypto.randomBytes);
 
 faker.seed(100);
 
@@ -39,35 +43,42 @@ function platNomor() {
   return `${makeid(2)}-${randNum(1000, 2000)}-${makeid(2)}`;
 }
 
-function generatePictures(amount) {
+async function generateRandomID(length) {
+  return await randomBytes(length).then(buf => buf.toString('hex'));
+}
+
+async function generatePictures(amount) {
   let pictures = [];
   for (let i = 0; i < amount; i++) {
-    pictures.push(faker.image.image(640, 480));
+    pictures.push({
+      public_id: await generateRandomID(20),
+      url: faker.image.image(640, 480),
+    });
   }
   return pictures;
 }
 
-let barang = [];
-let jumlahBarang = 103;
-for (let i = 0; i < jumlahBarang; i++) {
-  barang.push({
-    id: i,
-    tindakPidana: faker.helpers.randomize(tindakPidana),
-    nomorRegister: regNum(),
-    tanggalRegister: faker.date.past(10, new Date()),
-    nama: `${faker.commerce.productName()}${
-      faker.random.boolean() ? ` ${platNomor()}` : ''
-    }`,
-    instansi: faker.helpers.randomize(instansi),
-    jumlah: randNum(1, 10),
-    satuan: faker.helpers.randomize(satuan),
-    klasifikasi: faker.helpers.randomize(klasifikasi),
-    golongan: faker.helpers.randomize(golongan),
-    kondisi: faker.helpers.randomize(kondisi),
-    gambar: generatePictures(randNum(1, 5)),
-  });
+async function generateBarang(amount) {
+  let barang = [];
+  for (let i = 0; i < amount; i++) {
+    barang.push({
+      id: i,
+      tindakPidana: faker.helpers.randomize(tindakPidana),
+      nomorRegister: regNum(),
+      tanggalRegister: faker.date.past(10, new Date()),
+      nama: `${faker.commerce.productName()}${
+        faker.random.boolean() ? ` ${platNomor()}` : ''
+      }`,
+      instansi: faker.helpers.randomize(instansi),
+      jumlah: randNum(1, 10),
+      satuan: faker.helpers.randomize(satuan),
+      klasifikasi: faker.helpers.randomize(klasifikasi),
+      golongan: faker.helpers.randomize(golongan),
+      kondisi: faker.helpers.randomize(kondisi),
+      gambar: await generatePictures(randNum(1, 5)),
+    });
+  }
+  return barang;
 }
 
-module.exports = { barang };
-
-// console.log(faker.date.past(10, new Date()));
+module.exports = { generateBarang };

@@ -3,7 +3,7 @@ const mongoosePaginate = require('mongoose-paginate');
 
 const barangSchema = new mongoose.Schema({
   tindakPidana: String,
-  nomorRegister: String,
+  nomorRegister: { type: String, trim: true },
   tanggalRegister: Date,
   nama: String,
   instansi: String,
@@ -12,7 +12,7 @@ const barangSchema = new mongoose.Schema({
   klasifikasi: String,
   golongan: String,
   kondisi: String,
-  gambar: [String],
+  gambar: [{ public_id: String, url: String }],
 });
 
 barangSchema.plugin(mongoosePaginate);

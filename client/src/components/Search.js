@@ -47,7 +47,6 @@ export class Search extends Component {
                 <i className="fas fa-search"></i>
               </button>
               <button
-                role="button"
                 className="btn btn-default search__control search__reset-btn"
                 title="Reset pencarian"
                 onClick={this.handleReset}

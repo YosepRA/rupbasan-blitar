@@ -1,0 +1,51 @@
+.page-barang-form {
+  .form {
+    &__input {
+      &__gambar {
+        display: none;
+      }
+    }
+
+    &__file-prompt-btn {
+      display: block;
+      margin-bottom: 0.5rem;
+      padding: 0 0.5rem;
+      border: 1px solid $medium-grey;
+      font-size: 2rem;
+    }
+
+    &__image-preview-container {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    &__image-preview {
+      @include imageFillWidth();
+    }
+
+    &__image-remove-btn {
+      position: absolute;
+      top: 0;
+      right: 15px;
+      background-color: $main-red;
+      @include buttonAnimation(white, 20);
+    }
+
+    &__controls {
+      button {
+        min-width: 100px;
+        color: white;
+        @include buttonAnimation(white, 20);
+      }
+    }
+
+    &__submit-btn {
+      background-color: $main-blue;
+      margin-right: 1rem;
+    }
+
+    &__cancel-btn {
+      background-color: $main-red;
+    }
+  }
+}

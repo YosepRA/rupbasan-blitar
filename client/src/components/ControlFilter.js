@@ -47,6 +47,7 @@ export class ControlFilter extends Component {
 
   handleSubmit = () => {
     this.props.togglePanel('');
+    this.props.goBackToPageOne();
     this.props.setFilters(this.state.formData);
   };
 

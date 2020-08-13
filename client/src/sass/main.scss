@@ -317,7 +317,7 @@ body {
   @include Lato();
   color: $main-red;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 
   h1 {
     font-size: 1.8rem;
@@ -327,6 +327,7 @@ body {
 .search {
   position: relative;
   height: 46px;
+  margin: 0 auto 2rem auto;
 
   &__input {
     height: 100%;
@@ -458,6 +459,19 @@ body {
       }
     }
   }
+
+  &__keys {
+    .form-check-label {
+      width: 100%;
+    }
+  }
+}
+
+.search-result-message {
+  h2 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
 }
 
 .not-found {
@@ -465,6 +479,30 @@ body {
   text-align: center;
 }
 
-@import 'barang';
+.loading-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  @include flexCenter();
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba($light-grey, 0.7);
+
+  &__spinner {
+    width: 3rem;
+    height: 3rem;
+    margin: 1.4rem !important;
+  }
+}
+
+@import './barang';
+
+@import './barang-detail';
+
+@import './admin';
+
+@import './barang-form';
 
 @import 'main-breakpoints';

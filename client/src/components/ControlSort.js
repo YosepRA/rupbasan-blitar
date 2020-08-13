@@ -19,6 +19,7 @@ export class ControlSort extends Component {
 
   handleSubmit = () => {
     this.props.togglePanel('');
+    this.props.goBackToPageOne();
     this.props.setSortKey(this.state.sortKey);
   };
 
