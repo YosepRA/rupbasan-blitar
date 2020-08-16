@@ -1,6 +1,8 @@
 import Axios from 'axios';
 import { Urls } from './Urls';
 
+Axios.defaults.withCredentials = true;
+
 export class RestDataSource {
   getRequest(dataType, params) {
     return this.sendRequest('get', Urls[dataType], params);

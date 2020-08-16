@@ -53,6 +53,14 @@ $dark-grey: #707070;
   font-family: 'Open Sans', 'Lato', 'Segoe UI', sans-serif;
 }
 
+@mixin blueButton {
+  display: inline-block;
+  background-color: $main-blue;
+  color: white;
+  font-size: 1.1rem;
+  @include buttonAnimation(white, 20);
+}
+
 @mixin buttonAnimation($color, $darken-value) {
   @include all200ms();
 

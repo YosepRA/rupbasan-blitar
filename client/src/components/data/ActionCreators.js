@@ -65,3 +65,11 @@ export const setLoadingState = state => ({
   type: ActionTypes.LOADING,
   payload: state,
 });
+
+export const setAuthenticationStatus = (status, username) => ({
+  type: ActionTypes.SET_AUTHENTICATION,
+  payload: {
+    status,
+    username,
+  },
+});

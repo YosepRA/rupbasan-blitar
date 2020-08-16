@@ -70,6 +70,14 @@ export const Reducer = (dataStore, action) => {
         loading: action.payload,
       };
 
+    case ActionTypes.SET_AUTHENTICATION:
+      return {
+        ...dataStore,
+        isAuthenticated: action.payload.status,
+        user: action.payload.status ? action.payload.username : null,
+        loading: false,
+      };
+
     default:
       return dataStore || {};
   }

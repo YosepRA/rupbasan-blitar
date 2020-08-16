@@ -6,6 +6,8 @@ import { HTMLHead } from '../HTMLHead';
 import { ImagePreview } from './ImagePreview';
 import format from 'date-format';
 import { generateRandomID } from '../../helpers';
+import { ValidationMessages } from '../form/ValidationMessages';
+import { validate } from '../form/validation';
 
 const dataSource = new RestDataSource();
 
@@ -31,8 +33,21 @@ export class BarangForm extends Component {
       imageFiles: [],
       imagePreviews: [],
       dataFetchCounter: 0,
+      formFieldError: {},
     };
     this.fileInput = createRef();
+    this.rules = {
+      nama: { required: true },
+      tindakPidana: { required: true },
+      nomorRegister: { required: true },
+      tanggalRegister: { required: true },
+      instansi: { required: true },
+      jumlah: { required: true },
+      satuan: { required: true },
+      klasifikasi: { required: true },
+      golongan: { required: true },
+      kondisi: { required: true },
+    };
   }
 
   fileToDataURL(file) {
@@ -90,42 +105,48 @@ export class BarangForm extends Component {
   handleFormSubmit = event => event.preventDefault();
 
   handleSubmit = () => {
-    let form = new FormData();
-    for (const [field, value] of Object.entries(this.state.formData)) {
-      form.append(field, value);
-    }
-    for (const image of this.state.imageFiles) {
-      form.append('gambar', image);
-    }
-    // If it's an edit mode, then add old images that will still be in the next data update so that the ~
-    // ~ server will only delete the removed old images from Cloudinary.
-    if (this.isEdit) {
-      // What we need is Cloudinary assets, and not new one generated in DataURL format.
-      let cloudinaryData = this.state.imagePreviews.filter(img =>
-        img.url.startsWith(
-          'https://res.cloudinary.com/rupbasan-blitar/image/upload'
-        )
-      );
-      if (cloudinaryData.length === 0) {
-        form.append('oldGambar', JSON.stringify([]));
-      } else {
-        form.append('oldGambar', JSON.stringify(cloudinaryData));
-      }
-    }
+    let formFieldError = validate(this.state.formData, this.rules);
+    this.setState({ formFieldError }, () => {
+      if (Object.keys(this.state.formFieldError).length === 0) {
+        let form = new FormData();
+        for (const [field, value] of Object.entries(this.state.formData)) {
+          form.append(field, value);
+        }
+        for (const image of this.state.imageFiles) {
+          form.append('gambar', image);
+        }
+        // If it's an edit mode, then add old images that will still be in the next data update so that the ~
+        // ~ server will only delete the removed old images from Cloudinary.
+        if (this.isEdit) {
+          // What we need is Cloudinary assets, and not new one generated in DataURL format.
+          let cloudinaryData = this.state.imagePreviews.filter(img =>
+            img.url.startsWith(
+              'https://res.cloudinary.com/rupbasan-blitar/image/upload'
+            )
+          );
+          if (cloudinaryData.length === 0) {
+            form.append('oldGambar', JSON.stringify([]));
+          } else {
+            form.append('oldGambar', JSON.stringify(cloudinaryData));
+          }
+        }
 
-    let method = this.isEdit ? 'put' : 'post';
-    let url = `${Urls[DataTypes.BARANG]}${
-      this.isEdit ? '/' + this.props.barangDetail._id : ''
-    }`;
-    dataSource.sendRequest(method, url, {}, form).then(() => {
-      this.props.history.push('/admin/barang/1');
-      // Force data refresh.
-      this.props.loadData(
-        DataTypes.BARANG,
-        this.props[`${DataTypes.BARANG}__params`]
-      );
+        let method = this.isEdit ? 'put' : 'post';
+        let url = `${Urls[DataTypes.BARANG]}${
+          this.isEdit ? '/' + this.props.barangDetail._id : ''
+        }`;
+        dataSource.sendRequest(method, url, {}, form).then(() => {
+          this.props.history.push('/admin/barang/1');
+          // Force data refresh.
+          this.props.loadData(
+            DataTypes.BARANG,
+            this.props[`${DataTypes.BARANG}__params`]
+          );
+          this.props.getFilters();
+        });
+        this.props.setLoadingState(true);
+      }
     });
-    this.props.setLoadingState(true);
   };
 
   render() {
@@ -156,6 +177,8 @@ export class BarangForm extends Component {
                   onChange={this.handleChange}
                   placeholder="Motor Honda AG-2080-QJ"
                 />
+
+                <ValidationMessages errors={this.state.formFieldError.nama} />
               </div>
               <div className="form-group form__tindak-pidana">
                 <label htmlFor="tindak-pidana" className="form__label">
@@ -169,6 +192,10 @@ export class BarangForm extends Component {
                   value={this.state.formData.tindakPidana}
                   onChange={this.handleChange}
                   placeholder="Umum"
+                />
+
+                <ValidationMessages
+                  errors={this.state.formFieldError.tindakPidana}
                 />
               </div>
               <div className="form-group form__nomor-register">
@@ -184,6 +211,10 @@ export class BarangForm extends Component {
                   onChange={this.handleChange}
                   placeholder="RBB.2/262/V/2006"
                 />
+
+                <ValidationMessages
+                  errors={this.state.formFieldError.nomorRegister}
+                />
               </div>
               <div className="form-group form__tanggal-register">
                 <label htmlFor="tanggal-register" className="form__label">
@@ -196,6 +227,10 @@ export class BarangForm extends Component {
                   className="form-control form__input form__input--date form__input__tanggal-register"
                   value={this.state.formData.tanggalRegister}
                   onChange={this.handleChange}
+                />
+
+                <ValidationMessages
+                  errors={this.state.formFieldError.tanggalRegister}
                 />
               </div>
               <div className="form-group form__instansi">
@@ -211,6 +246,10 @@ export class BarangForm extends Component {
                   onChange={this.handleChange}
                   placeholder="Polres Blitar"
                 />
+
+                <ValidationMessages
+                  errors={this.state.formFieldError.instansi}
+                />
               </div>
               <div className="form-group form__jumlah">
                 <label htmlFor="jumlah" className="form__label">
@@ -225,6 +264,8 @@ export class BarangForm extends Component {
                   onChange={this.handleChange}
                   placeholder="1"
                 />
+
+                <ValidationMessages errors={this.state.formFieldError.jumlah} />
               </div>
               <div className="form-group form__satuan">
                 <label htmlFor="satuan" className="form__label">
@@ -239,6 +280,8 @@ export class BarangForm extends Component {
                   onChange={this.handleChange}
                   placeholder="Buah"
                 />
+
+                <ValidationMessages errors={this.state.formFieldError.satuan} />
               </div>
               <div className="form-group form__klasifikasi">
                 <label htmlFor="klasifikasi" className="form__label">
@@ -252,6 +295,10 @@ export class BarangForm extends Component {
                   value={this.state.formData.klasifikasi}
                   onChange={this.handleChange}
                   placeholder="Umum"
+                />
+
+                <ValidationMessages
+                  errors={this.state.formFieldError.klasifikasi}
                 />
               </div>
               <div className="form-group form__golongan">
@@ -267,6 +314,10 @@ export class BarangForm extends Component {
                   onChange={this.handleChange}
                   placeholder="KBM"
                 />
+
+                <ValidationMessages
+                  errors={this.state.formFieldError.golongan}
+                />
               </div>
               <div className="form-group form__kondisi">
                 <label htmlFor="kondisi" className="form__label">
@@ -280,6 +331,10 @@ export class BarangForm extends Component {
                   value={this.state.formData.kondisi}
                   onChange={this.handleChange}
                   placeholder="Baik"
+                />
+
+                <ValidationMessages
+                  errors={this.state.formFieldError.kondisi}
                 />
               </div>
               <div className="form-group form__gambar">

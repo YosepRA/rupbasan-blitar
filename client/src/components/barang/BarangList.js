@@ -30,7 +30,7 @@ export class BarangList extends Component {
                         className="barang__image__link"
                       >
                         <img
-                          src={gambar[0].url}
+                          src={gambar.length > 0 ? gambar[0].url : ''}
                           className="card-img-top"
                           alt={nama}
                         />

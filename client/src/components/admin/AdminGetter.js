@@ -15,7 +15,7 @@ export class AdminGetter extends Component {
     return activeFilters;
   }
 
-  getBarang() {
+  getData() {
     const activeFilters = this.convertFilter() || {};
 
     let oldParams = this.props[`${this.props.dataType}__params`] || {};
@@ -37,10 +37,10 @@ export class AdminGetter extends Component {
   }
 
   componentDidUpdate() {
-    this.getBarang();
+    this.getData();
   }
 
   componentDidMount() {
-    this.getBarang();
+    this.getData();
   }
 }

@@ -16,13 +16,10 @@
       display: flex;
       justify-content: center;
 
-      a {
-        display: inline-block;
+      a,
+      button {
+        @include blueButton();
         margin: 0 0.5rem;
-        background-color: $main-blue;
-        color: white;
-        font-size: 1.1rem;
-        @include buttonAnimation(white, 20);
 
         &.active {
           background-color: $main-red;
@@ -125,6 +122,45 @@
       }
     }
   }
+
+  .admin-akun {
+    .new-barang {
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid $medium-grey;
+
+      a {
+        @include blueButton();
+      }
+    }
+
+    .change-password {
+      &__title {
+        margin-bottom: 1rem;
+
+        h3 {
+          @include Lato();
+          font-size: 1.3rem;
+          font-weight: 700;
+        }
+      }
+
+      &__current-user {
+        p {
+          font-weight: 700;
+        }
+      }
+
+      .form {
+        &__control {
+          button {
+            @include blueButton();
+            width: 100px;
+          }
+        }
+      }
+    }
+  }
 }
 
 // BREAKPOINTS
@@ -152,7 +188,8 @@
       nav {
         flex-direction: column;
 
-        a {
+        a,
+        button {
           margin: 0 0 1rem;
         }
       }

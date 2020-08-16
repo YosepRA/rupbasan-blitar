@@ -18,4 +18,9 @@ export const Urls = {
   [`${DataTypes.INFORMASI}_PROSEDUR_ADMINISTRASI_MUTASI`]: 'prosedur-administrasi-mutasi-benda-sitaan-negara',
   [`${DataTypes.INFORMASI}_SYARAT_PENGELUARAN_BENDA`]: 'syarat-pengeluaran-benda-sitaan-setelah-adanya-putusan-pengadilan',
   [`${DataTypes.INFORMASI}_LAYANAN_PENGADUAN`]: 'layanan-pengaduan',
+  [DataTypes.USER]: `${protocol}://${hostname}:${port}/user`,
+  [DataTypes.REGISTER]: `${protocol}://${hostname}:${port}/user/register`,
+  [DataTypes.LOGIN]: `${protocol}://${hostname}:${port}/user/login`,
+  [DataTypes.LOGOUT]: `${protocol}://${hostname}:${port}/user/logout`,
+  [DataTypes.RESET]: `${protocol}://${hostname}:${port}/user/reset`,
 };

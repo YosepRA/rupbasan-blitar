@@ -6,6 +6,11 @@ export const DataTypes = {
   AKUN: 'akun',
   PROFIL: 'profil',
   INFORMASI: 'informasi',
+  USER: 'user',
+  REGISTER: 'register',
+  LOGIN: 'login',
+  LOGOUT: 'logout',
+  RESET: 'reset',
 };
 
 export const ActionTypes = {
@@ -19,4 +24,5 @@ export const ActionTypes = {
   DATA_GET_BARANG_DETAIL: 'data_get_barang_detail',
   RESET_PARAMETERS: 'reset_parameters',
   LOADING: 'loading',
+  SET_AUTHENTICATION: 'set_authentication',
 };

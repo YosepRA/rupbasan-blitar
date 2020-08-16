@@ -1,0 +1,86 @@
+.page-user-auth {
+  .wrapper {
+    @include flexCenter();
+  }
+
+  .headline {
+    display: none;
+  }
+
+  .form {
+    flex: 0 0 400px;
+
+    &__title {
+      h2 {
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+
+    &__password {
+      margin-bottom: 1.3rem;
+    }
+
+    &__submit-btn {
+      display: inline-block;
+      margin-bottom: 0.7rem;
+      padding: 0.4rem 2rem;
+      background-color: $main-blue;
+      font-size: 1.1rem;
+      color: white;
+      @include buttonAnimation(white, 20);
+    }
+
+    &__link {
+      display: block;
+    }
+  }
+}
+
+@include breakpoint-up(lg) {
+  .page-user-auth {
+    .page-header,
+    .page-footer {
+      display: none;
+    }
+
+    .main-container {
+      margin-bottom: 0;
+    }
+
+    .wrapper {
+      height: 100vh;
+    }
+
+    .headline {
+      @include flexCenter();
+      flex-direction: column;
+      flex: 1 0 60%;
+      height: 100%;
+      background-color: $main-red;
+      color: white;
+
+      & > div {
+        width: 90%;
+      }
+
+      h2 {
+        font-size: 2.3rem;
+      }
+
+      &__title {
+        padding: 0 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      &__emphasize {
+        color: $main-yellow;
+      }
+    }
+
+    .form {
+      flex: 1 0 40%;
+      padding: 0 2rem;
+    }
+  }
+}

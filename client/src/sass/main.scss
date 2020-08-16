@@ -149,7 +149,7 @@ body {
 
         &--login {
           background-color: $main-yellow;
-          margin: 2rem 0 4rem 0;
+          margin: 1rem 0 4rem 0;
           padding: 0.3rem 1.5rem;
           font-size: 1.1rem;
 
@@ -497,6 +497,8 @@ body {
   }
 }
 
+@import './home';
+
 @import './barang';
 
 @import './barang-detail';
@@ -504,5 +506,9 @@ body {
 @import './admin';
 
 @import './barang-form';
+
+@import './user-auth';
+
+@import './reset';
 
 @import 'main-breakpoints';

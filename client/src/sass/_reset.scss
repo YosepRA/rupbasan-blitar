@@ -1,0 +1,7 @@
+.page-reset {
+  .form {
+    &__submit-btn {
+      @include blueButton();
+    }
+  }
+}

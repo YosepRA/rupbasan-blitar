@@ -1,4 +1,5 @@
 const slugify = require('slugify');
+const crypto = require('crypto');
 
 // Clean all whitespaces from a string.
 function cleanWhitespace(string) {
@@ -74,6 +75,14 @@ function getFilterKeys(filterFields, data) {
   return filterKeys;
 }
 
+function generateRandomID(length) {
+  return new Promise((resolve, reject) => {
+    crypto.randomBytes(length, (err, buffer) =>
+      resolve(buffer.toString('hex'))
+    );
+  });
+}
+
 module.exports = {
   cleanWhitespace,
   escapeRegex,
@@ -81,4 +90,5 @@ module.exports = {
   inRegex,
   getFiltersFromQuery,
   getFilterKeys,
+  generateRandomID,
 };

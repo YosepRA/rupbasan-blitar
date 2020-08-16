@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { DataTypes } from '../data/Types';
+import { RestDataSource } from '../data/RestDataSource';
 import { HTMLHead } from '../HTMLHead';
 import { ToggleLink } from '../ToggleLink';
 import { AdminBarang } from './AdminBarang';
 import { AdminArtikel } from './AdminArtikel';
 import { AkunSetting } from './AkunSetting';
 
+const dataSource = new RestDataSource();
+
 export class Admin extends Component {
+  handleLogout = () => {
+    dataSource.getRequest(DataTypes.LOGOUT).then(({ data: { success } }) => {
+      if (success) {
+        this.props.setAuthenticationStatus(false);
+        this.props.history.push('/');
+      }
+    });
+  };
+
   render() {
     return (
       <main className="main-container container">
@@ -23,20 +35,27 @@ export class Admin extends Component {
                 to={`/admin/${DataTypes.BARANG}`}
                 className="admin-nav__link btn btn-default"
               >
-                Barang
+                <i className="fas fa-cube"></i> Barang
               </ToggleLink>
-              <ToggleLink
+              {/* <ToggleLink
                 to={`/admin/${DataTypes.ARTIKEL}`}
                 className="admin-nav__link btn btn-default"
               >
                 Artikel
-              </ToggleLink>
+              </ToggleLink> */}
               <ToggleLink
                 to={`/admin/${DataTypes.AKUN}`}
                 className="admin-nav__link btn btn-default"
               >
                 <i className="fas fa-user-cog"></i> Pengaturan Akun
               </ToggleLink>
+
+              <button
+                className="admin-nav__link btn btn-default"
+                onClick={this.handleLogout}
+              >
+                <i className="fas fa-sign-out-alt"></i> Logout
+              </button>
             </nav>
           </section>
 

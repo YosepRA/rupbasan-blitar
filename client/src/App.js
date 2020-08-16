@@ -7,15 +7,16 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { HeaderConnector } from './components/HeaderConnector';
 import { Footer } from './components/Footer';
 import { Home } from './components/Home';
 import { BarangConnector } from './components/barang/BarangConnector';
 import { AdminConnector } from './components/admin/AdminConnector';
-import { Login } from './components/auth/Login';
 import { Loading } from './components/Loading';
 import { ProfilSwitch } from './components/profil/ProfilSwitch';
 import { InformasiSwitch } from './components/informasi/InformasiSwitch';
+import { Reset } from './components/auth/Reset';
 
 export class App extends Component {
   render() {
@@ -25,6 +26,17 @@ export class App extends Component {
           <Router>
             <HeaderConnector />
             <Loading />
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
             <Switch>
               <Route path="/" exact={true}>
                 <Home />
@@ -42,9 +54,7 @@ export class App extends Component {
 
               <Route path="/admin" component={AdminConnector} />
 
-              <Route path="/login">
-                <Login />
-              </Route>
+              <Route path="/reset" component={Reset} />
 
               <Redirect to="/" />
             </Switch>

@@ -1,13 +1,13 @@
 .page-barang-detail {
   .gambar {
-    flex: 0;
-    width: 75%;
+    position: relative;
+    z-index: 1;
+    width: 100%;
     margin-bottom: 2rem;
 
-    &__preview {
-      margin-bottom: 1rem;
-
+    &__carousel {
       &-image {
+        width: 100%;
         text-align: center;
 
         img {
@@ -18,16 +18,14 @@
       }
     }
 
-    &__carousel {
-      &-image {
-        height: 70px;
-        text-align: center;
+    .slick-arrow {
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
 
-        img {
-          display: inline-block;
-          width: auto;
-          height: 100%;
-        }
+      &::before {
+        font-size: 2rem;
+        color: $main-black;
       }
     }
   }
@@ -45,18 +43,6 @@
 }
 
 /* ======================================================================================================== */
-
-@include breakpoint-up(sm) {
-  .page-barang-detail {
-    .gambar {
-      &__carousel {
-        &-image {
-          height: 80px;
-        }
-      }
-    }
-  }
-}
 
 @include breakpoint-up(md) {
   .page-barang-detail {
@@ -78,14 +64,6 @@
   .page-barang-detail {
     .main-container {
       max-width: 1140px;
-    }
-
-    .gambar {
-      &__carousel {
-        &-image {
-          height: 100px;
-        }
-      }
     }
   }
 }
