@@ -1,0 +1,105 @@
+.page-profil {
+  .page-section {
+    margin-bottom: 1.6rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $main-red;
+  }
+
+  .section-title {
+    h2 {
+      color: $main-red;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+
+  .struktur-organisasi {
+    width: 100%;
+    height: 600px;
+    overflow-x: auto;
+    text-align: center;
+
+    img {
+      width: auto;
+      max-height: 100%;
+    }
+  }
+
+  .tahap {
+    &-section {
+      margin-bottom: 2rem;
+    }
+
+    &__header,
+    &__title {
+      color: $main-red;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+
+  .dasar-hukum {
+    &__list {
+      padding-left: 1.8rem;
+
+      &-item {
+        margin-bottom: 1rem;
+
+        &__title {
+          margin-bottom: 0;
+          color: $main-red;
+        }
+      }
+    }
+
+    .p44-a1-a2__title {
+      margin-bottom: 0;
+    }
+  }
+
+  .sop {
+    width: 100%;
+    height: 600px;
+    overflow-x: auto;
+    text-align: center;
+
+    img {
+      width: auto;
+      max-height: 100%;
+    }
+  }
+}
+
+/* ======================================================================================================== */
+
+@include breakpoint-up(md) {
+  .page-profil {
+    .main-container {
+      max-width: 720px;
+    }
+  }
+}
+
+@include breakpoint-up(lg) {
+  .page-profil {
+    &.page-struktur-organisasi,
+    &.page-sop {
+      .main-container {
+        max-width: 992px;
+      }
+    }
+  }
+}
+
+@include breakpoint-up(xl) {
+  .page-profil {
+    &.page-struktur-organisasi,
+    &.page-sop {
+      .main-container {
+        max-width: 1140px;
+      }
+    }
+  }
+}

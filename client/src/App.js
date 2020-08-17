@@ -38,9 +38,7 @@ export class App extends Component {
               pauseOnHover
             />
             <Switch>
-              <Route path="/" exact={true}>
-                <Home />
-              </Route>
+              <Route path="/" exact={true} component={Home} />
 
               <Route path="/barang" component={BarangConnector} />
 

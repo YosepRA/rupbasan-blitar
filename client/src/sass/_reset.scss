@@ -1,5 +1,12 @@
 .page-reset {
   .form {
+    @include flexCenter();
+
+    form {
+      width: 100%;
+      max-width: 600px;
+    }
+
     &__submit-btn {
       @include blueButton();
     }

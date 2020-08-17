@@ -39,7 +39,7 @@ export class ManagementBarang extends Component {
           <PageControls {...this.props}>
             <ControlFilter />
             <ControlSort />
-            <ControlPageSize />
+            <ControlPageSize pageSizes={[25, 50, 100, 200]} />
           </PageControls>
         </div>
 

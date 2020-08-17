@@ -77,10 +77,10 @@ export class ControlSort extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.sortKey && props.sortKey !== state.oldSortKey) {
+    if (props.sort && props.sort !== state.oldSortKey) {
       return {
-        sortKey: props.sortKey,
-        oldSortKey: props.sortKey,
+        sortKey: props.sort,
+        oldSortKey: props.sort,
       };
     }
     return state;

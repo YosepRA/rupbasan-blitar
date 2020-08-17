@@ -1,0 +1,95 @@
+.page-layanan-pengaduan {
+  .banner {
+    max-width: 520px;
+    margin: 0 auto 2rem auto;
+    padding: 1.5rem 1rem;
+    border: 1px solid $main-red;
+    border-radius: 10px;
+    text-align: center;
+
+    &__title {
+      margin-bottom: 1rem;
+
+      h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+      }
+    }
+
+    &__emphasize {
+      color: $main-red;
+    }
+
+    &__requirements {
+      margin-bottom: 1rem;
+
+      p {
+        margin-bottom: 0.5rem;
+      }
+
+      &-list {
+        padding-left: 8rem;
+        text-align: left;
+      }
+    }
+
+    &__notice {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+  }
+
+  .contact {
+    &__section {
+      @include flexCenter();
+      flex-direction: column;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 3px solid $medium-grey;
+      border-radius: 2px;
+    }
+
+    &__title {
+      text-align: center;
+      text-transform: uppercase;
+
+      h3 {
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+    }
+
+    &__info {
+      @include flexCenter();
+      font-size: 0.9rem;
+    }
+
+    &__phone {
+      margin-right: 1rem;
+    }
+
+    i {
+      display: inline-block;
+      margin-right: 0.3rem;
+    }
+
+    &__lapor {
+      img {
+        width: auto;
+        max-height: 80px;
+      }
+    }
+  }
+}
+
+/* ======================================================================================================== */
+
+@include breakpoint-up(md) {
+  .page-layanan-pengaduan {
+    .contact {
+      &__section {
+        padding: 0.5rem;
+      }
+    }
+  }
+}

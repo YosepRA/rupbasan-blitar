@@ -135,7 +135,7 @@ export class Header extends Component {
                 controlLabel="Informasi"
                 baseUrl="/informasi"
               />
-              <ToggleLink to="/artikel">Artikel</ToggleLink>
+              {/* <ToggleLink to="/artikel">Artikel</ToggleLink> */}
               <ToggleLink
                 to="/admin"
                 className="main-nav__menu-link--login btn"

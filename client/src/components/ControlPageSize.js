@@ -4,10 +4,10 @@ export class ControlPageSize extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageSize: 5,
-      prevPageSize: 5,
+      pageSize: props.pageSizes ? props.pageSizes[0] : 10,
+      prevPageSize: 10,
     };
-    this.pageSizes = [5, 10, 25, 50];
+    this.pageSizes = props.pageSizes || [10, 25, 50, 100];
   }
 
   handleChange = ({ target: { value } }) =>
@@ -19,7 +19,7 @@ export class ControlPageSize extends Component {
     this.props.setPageSize(this.state.pageSize);
   };
 
-  createSortKeys() {
+  createPageSizeKeys() {
     return (
       <div className="controls__keys page-sizes__keys">
         {this.pageSizes.map(pageSize => (
@@ -59,7 +59,7 @@ export class ControlPageSize extends Component {
               <h3>Data per halaman:</h3>
             </div>
 
-            {this.createSortKeys()}
+            {this.createPageSizeKeys()}
 
             <div className="controls__submit-btn sorts__submit-btn">
               <button className="btn btn-default" onClick={this.handleSubmit}>

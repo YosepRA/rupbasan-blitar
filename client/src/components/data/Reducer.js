@@ -48,8 +48,8 @@ export const Reducer = (dataStore, action) => {
         searchKey: '',
         filterStatus: {},
         sort: '-tanggalRegister',
-        pageSize: 5,
-        barangDetail: undefined,
+        pageSize: null,
+        barangDetail: null,
       };
 
     case ActionTypes.DATA_GET_BARANG_COUNT:

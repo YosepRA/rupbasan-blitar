@@ -34,13 +34,13 @@ export class LayananPengaduan extends Component {
           <div className="banner__notice">
             <p>
               Identitas pelapor kami{' '}
-              <span className="banner__emphasize">lindungi</span>
+              <span className="banner__emphasize">lindungi.</span>
             </p>
           </div>
         </section>
 
-        <section className="contact">
-          <div className="contact__section contact__inspektorat">
+        <section className="contact row">
+          <div className="contact__section contact__inspektorat col-md-6">
             <header className="contact__title">
               <h3>Inspektorat Jenderal Kementrian Hukum dan HAM RI</h3>
             </header>
@@ -56,7 +56,7 @@ export class LayananPengaduan extends Component {
             </div>
           </div>
 
-          <div className="contact__section contact__lapor">
+          <div className="contact__section contact__lapor col-md-6">
             <header className="contact__title">
               <h3>lapor.go.id</h3>
             </header>
@@ -69,7 +69,7 @@ export class LayananPengaduan extends Component {
             </div>
           </div>
 
-          <div className="contact__section contact__kanwil-jatim">
+          <div className="contact__section contact__kanwil-jatim col-md-6">
             <header className="contact__title">
               <h3>Pengaduan Kanwil Kemenkumham Jawa Timur</h3>
             </header>
@@ -81,7 +81,7 @@ export class LayananPengaduan extends Component {
             </div>
           </div>
 
-          <div className="contact__section contact__pemasyarakatan-jatim">
+          <div className="contact__section contact__pemasyarakatan-jatim col-md-6">
             <header className="contact__title">
               <h3>Pengaduan Divisi Pemasyarakatan Jawa Timur</h3>
             </header>
@@ -93,7 +93,7 @@ export class LayananPengaduan extends Component {
             </div>
           </div>
 
-          <div className="contact__section contact__rupbasan-blitar">
+          <div className="contact__section contact__rupbasan-blitar col-md-6">
             <header className="contact__title">
               <h3>Layanan Pengaduan Rupbasan Blitar</h3>
             </header>
@@ -111,5 +111,13 @@ export class LayananPengaduan extends Component {
         </section>
       </main>
     );
+  }
+
+  componentDidMount() {
+    document.body.classList.add('page-layanan-pengaduan');
+  }
+
+  componentWillUnmount() {
+    document.body.classList.remove('page-layanan-pengaduan');
   }
 }

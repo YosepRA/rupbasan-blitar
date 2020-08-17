@@ -8,25 +8,6 @@ import { ControlSort } from '../ControlSort';
 import { ControlPageSize } from '../ControlPageSize';
 import { DataNotFound } from '../DataNotFound';
 
-// import { barang } from '../data/fakeData';
-// import { filterKeys as filterList } from '../data/filterKeys';
-// let filterStatus = {
-//   tindakPidana: {
-//     umum: true,
-//     khusus: false,
-//   },
-//   instansi: {
-//     'kejari blitar': true,
-//     'polres blitar kota': false,
-//     'polres blitar': false,
-//   },
-//   klasifikasi: {
-//     'umum terbuka': true,
-//     berbahaya: false,
-//     berharga: false,
-//   },
-// };
-
 export class Barang extends Component {
   render() {
     return (

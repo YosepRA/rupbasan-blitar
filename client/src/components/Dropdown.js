@@ -11,7 +11,9 @@ export class Dropdown extends Component {
 
   toggleClick = () => this.setState({ isHidden: !this.state.isHidden });
 
-  toggleHover = isHidden => this.setState({ isHidden });
+  handleLinkClick = ({ target: { tagName } }) => {
+    if (tagName === 'A') this.setState({ isHidden: true });
+  };
 
   getControlClasses() {
     return `main-nav__menu-dropdown dropdown__control ${
@@ -26,16 +28,12 @@ export class Dropdown extends Component {
 
   render() {
     return (
-      <div
-        className="dropdown"
-        onMouseEnter={() => this.toggleHover(false)}
-        onMouseLeave={() => this.toggleHover(true)}
-      >
-        <button className={this.getControlClasses()} onClick={this.toggleOpen}>
+      <div className="dropdown">
+        <button className={this.getControlClasses()} onClick={this.toggleClick}>
           {this.props.controlLabel}
           <i className="fas fa-chevron-down"></i>
         </button>
-        <div className="dropdown__panel">
+        <div className="dropdown__panel" onClick={this.handleLinkClick}>
           {this.props.list &&
             this.props.list.map(({ name, slug }) => (
               <ToggleLink

@@ -6,7 +6,7 @@ export const validate = (data, rules) => {
   Object.keys(data).forEach(field => {
     // If a data field has a rule. If not, then skip.
     if (rules.hasOwnProperty(field)) {
-      let value = data[field];
+      let value = String(data[field]);
       let errors = [];
 
       if (rules[field].required && validator.isEmpty(value)) {

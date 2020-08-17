@@ -18,7 +18,11 @@ export class Search extends Component {
     let currentPage = this.props.match.params.page;
 
     this.setState({ searchKey: '' });
-    this.props.history.push(filterPageFromUrl(currentUrl, currentPage));
+    this.props.history.push(
+      currentUrl === '/'
+        ? '/barang'
+        : filterPageFromUrl(currentUrl, currentPage)
+    );
     this.props.search(this.state.searchKey);
   };
 

@@ -40,4 +40,12 @@ export class ProfilSwitch extends Component {
       </Switch>
     );
   }
+
+  componentDidMount() {
+    document.body.classList.add('page-profil');
+  }
+
+  componentWillUnmount() {
+    document.body.classList.remove('page-profil');
+  }
 }

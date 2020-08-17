@@ -30,7 +30,7 @@ export class BarangDetail extends Component {
     let carouselOptions = {
       dots: true,
       arrows: true,
-      infinite: true,
+      infinite: false,
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -56,14 +56,14 @@ export class BarangDetail extends Component {
         </header>
 
         <div className="row justify-content-center">
-          <section className="gambar col-12 col-lg-5">
+          <section className="gambar col-12 col-lg-6">
             <Slider {...carouselOptions} className="gambar__carousel">
               {this.props.barangDetail &&
                 this.getGambar('gambar__carousel-image')}
             </Slider>
           </section>
 
-          <section className="info col-12 col-lg-5">
+          <section className="info col-12 col-lg-6">
             <header className="info__title">
               <h2>Informasi detail:</h2>
             </header>

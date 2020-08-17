@@ -169,7 +169,7 @@ export class Register extends Component {
               >
                 Register
               </button>
-              <Link to="/admin" className="form__go-back">
+              <Link to="/admin" className="form__link form__go-back">
                 Kembali ke halaman admin
               </Link>
             </form>

@@ -92,7 +92,11 @@ export class BarangForm extends Component {
     });
   };
 
-  handleFilePrompt = () => this.fileInput.current.click();
+  handleFilePrompt = event => {
+    event.preventDefault();
+    event.stopPropagation();
+    this.fileInput.current.click();
+  };
 
   handleRemoveImage = id =>
     this.setState({
@@ -102,7 +106,10 @@ export class BarangForm extends Component {
 
   handleCancel = () => this.props.history.push('/admin/barang/1');
 
-  handleFormSubmit = event => event.preventDefault();
+  handleFormSubmit = event => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
 
   handleSubmit = () => {
     let formFieldError = validate(this.state.formData, this.rules);
@@ -163,227 +170,221 @@ export class BarangForm extends Component {
 
         <div className="row justify-content-center">
           <div className="form col-12 col-md-8">
-            <form onSubmit={this.handleFormSubmit}>
-              <div className="form-group form__nama">
-                <label htmlFor="nama" className="form__label">
-                  Nama barang
-                </label>
-                <input
-                  type="text"
-                  name="nama"
-                  id="nama"
-                  className="form-control form__input form__input--text form__input__nama"
-                  value={this.state.formData.nama}
-                  onChange={this.handleChange}
-                  placeholder="Motor Honda AG-2080-QJ"
-                />
+            {/* <form onSubmit={this.handleFormSubmit}> */}
+            <div className="form-group form__nama">
+              <label htmlFor="nama" className="form__label">
+                Nama barang
+              </label>
+              <input
+                type="text"
+                name="nama"
+                id="nama"
+                className="form-control form__input form__input--text form__input__nama"
+                value={this.state.formData.nama}
+                onChange={this.handleChange}
+                placeholder="Motor Honda AG-2080-QJ"
+              />
 
-                <ValidationMessages errors={this.state.formFieldError.nama} />
-              </div>
-              <div className="form-group form__tindak-pidana">
-                <label htmlFor="tindak-pidana" className="form__label">
-                  Jenis tindak pidana
-                </label>
-                <input
-                  type="text"
-                  name="tindakPidana"
-                  id="tindak-pidana"
-                  className="form-control form__input form__input--text form__input__tindak-pidana"
-                  value={this.state.formData.tindakPidana}
-                  onChange={this.handleChange}
-                  placeholder="Umum"
-                />
+              <ValidationMessages errors={this.state.formFieldError.nama} />
+            </div>
+            <div className="form-group form__tindak-pidana">
+              <label htmlFor="tindak-pidana" className="form__label">
+                Jenis tindak pidana
+              </label>
+              <input
+                type="text"
+                name="tindakPidana"
+                id="tindak-pidana"
+                className="form-control form__input form__input--text form__input__tindak-pidana"
+                value={this.state.formData.tindakPidana}
+                onChange={this.handleChange}
+                placeholder="Umum"
+              />
 
-                <ValidationMessages
-                  errors={this.state.formFieldError.tindakPidana}
-                />
-              </div>
-              <div className="form-group form__nomor-register">
-                <label htmlFor="nomor-register" className="form__label">
-                  Nomor register
-                </label>
-                <input
-                  type="text"
-                  name="nomorRegister"
-                  id="nomor-register"
-                  className="form-control form__input form__input--text form__input__nomor-register"
-                  value={this.state.formData.nomorRegister}
-                  onChange={this.handleChange}
-                  placeholder="RBB.2/262/V/2006"
-                />
+              <ValidationMessages
+                errors={this.state.formFieldError.tindakPidana}
+              />
+            </div>
+            <div className="form-group form__nomor-register">
+              <label htmlFor="nomor-register" className="form__label">
+                Nomor register
+              </label>
+              <input
+                type="text"
+                name="nomorRegister"
+                id="nomor-register"
+                className="form-control form__input form__input--text form__input__nomor-register"
+                value={this.state.formData.nomorRegister}
+                onChange={this.handleChange}
+                placeholder="RBB.2/262/V/2006"
+              />
 
-                <ValidationMessages
-                  errors={this.state.formFieldError.nomorRegister}
-                />
-              </div>
-              <div className="form-group form__tanggal-register">
-                <label htmlFor="tanggal-register" className="form__label">
-                  Tanggal register
-                </label>
-                <input
-                  type="date"
-                  name="tanggalRegister"
-                  id="tanggal-register"
-                  className="form-control form__input form__input--date form__input__tanggal-register"
-                  value={this.state.formData.tanggalRegister}
-                  onChange={this.handleChange}
-                />
+              <ValidationMessages
+                errors={this.state.formFieldError.nomorRegister}
+              />
+            </div>
+            <div className="form-group form__tanggal-register">
+              <label htmlFor="tanggal-register" className="form__label">
+                Tanggal register
+              </label>
+              <input
+                type="date"
+                name="tanggalRegister"
+                id="tanggal-register"
+                className="form-control form__input form__input--date form__input__tanggal-register"
+                value={this.state.formData.tanggalRegister}
+                onChange={this.handleChange}
+              />
 
-                <ValidationMessages
-                  errors={this.state.formFieldError.tanggalRegister}
-                />
-              </div>
-              <div className="form-group form__instansi">
-                <label htmlFor="instansi" className="form__label">
-                  Instansi
-                </label>
-                <input
-                  type="text"
-                  name="instansi"
-                  id="instansi"
-                  className="form-control form__input form__input--text form__input__instansi"
-                  value={this.state.formData.instansi}
-                  onChange={this.handleChange}
-                  placeholder="Polres Blitar"
-                />
+              <ValidationMessages
+                errors={this.state.formFieldError.tanggalRegister}
+              />
+            </div>
+            <div className="form-group form__instansi">
+              <label htmlFor="instansi" className="form__label">
+                Instansi
+              </label>
+              <input
+                type="text"
+                name="instansi"
+                id="instansi"
+                className="form-control form__input form__input--text form__input__instansi"
+                value={this.state.formData.instansi}
+                onChange={this.handleChange}
+                placeholder="Polres Blitar"
+              />
 
-                <ValidationMessages
-                  errors={this.state.formFieldError.instansi}
-                />
-              </div>
-              <div className="form-group form__jumlah">
-                <label htmlFor="jumlah" className="form__label">
-                  Jumlah
-                </label>
-                <input
-                  type="text"
-                  name="jumlah"
-                  id="jumlah"
-                  className="form-control form__input form__input--text form__input__jumlah"
-                  value={this.state.formData.jumlah}
-                  onChange={this.handleChange}
-                  placeholder="1"
-                />
+              <ValidationMessages errors={this.state.formFieldError.instansi} />
+            </div>
+            <div className="form-group form__jumlah">
+              <label htmlFor="jumlah" className="form__label">
+                Jumlah
+              </label>
+              <input
+                type="text"
+                name="jumlah"
+                id="jumlah"
+                className="form-control form__input form__input--text form__input__jumlah"
+                value={this.state.formData.jumlah}
+                onChange={this.handleChange}
+                placeholder="1"
+              />
 
-                <ValidationMessages errors={this.state.formFieldError.jumlah} />
-              </div>
-              <div className="form-group form__satuan">
-                <label htmlFor="satuan" className="form__label">
-                  Satuan
-                </label>
-                <input
-                  type="text"
-                  name="satuan"
-                  id="satuan"
-                  className="form-control form__input form__input--text form__input__satuan"
-                  value={this.state.formData.satuan}
-                  onChange={this.handleChange}
-                  placeholder="Buah"
-                />
+              <ValidationMessages errors={this.state.formFieldError.jumlah} />
+            </div>
+            <div className="form-group form__satuan">
+              <label htmlFor="satuan" className="form__label">
+                Satuan
+              </label>
+              <input
+                type="text"
+                name="satuan"
+                id="satuan"
+                className="form-control form__input form__input--text form__input__satuan"
+                value={this.state.formData.satuan}
+                onChange={this.handleChange}
+                placeholder="Buah"
+              />
 
-                <ValidationMessages errors={this.state.formFieldError.satuan} />
-              </div>
-              <div className="form-group form__klasifikasi">
-                <label htmlFor="klasifikasi" className="form__label">
-                  Klasifikasi
-                </label>
-                <input
-                  type="text"
-                  name="klasifikasi"
-                  id="klasifikasi"
-                  className="form-control form__input form__input--text form__input__klasifikasi"
-                  value={this.state.formData.klasifikasi}
-                  onChange={this.handleChange}
-                  placeholder="Umum"
-                />
+              <ValidationMessages errors={this.state.formFieldError.satuan} />
+            </div>
+            <div className="form-group form__klasifikasi">
+              <label htmlFor="klasifikasi" className="form__label">
+                Klasifikasi
+              </label>
+              <input
+                type="text"
+                name="klasifikasi"
+                id="klasifikasi"
+                className="form-control form__input form__input--text form__input__klasifikasi"
+                value={this.state.formData.klasifikasi}
+                onChange={this.handleChange}
+                placeholder="Umum"
+              />
 
-                <ValidationMessages
-                  errors={this.state.formFieldError.klasifikasi}
-                />
-              </div>
-              <div className="form-group form__golongan">
-                <label htmlFor="golongan" className="form__label">
-                  Golongan
-                </label>
-                <input
-                  type="text"
-                  name="golongan"
-                  id="golongan"
-                  className="form-control form__input form__input--text form__input__golongan"
-                  value={this.state.formData.golongan}
-                  onChange={this.handleChange}
-                  placeholder="KBM"
-                />
+              <ValidationMessages
+                errors={this.state.formFieldError.klasifikasi}
+              />
+            </div>
+            <div className="form-group form__golongan">
+              <label htmlFor="golongan" className="form__label">
+                Golongan
+              </label>
+              <input
+                type="text"
+                name="golongan"
+                id="golongan"
+                className="form-control form__input form__input--text form__input__golongan"
+                value={this.state.formData.golongan}
+                onChange={this.handleChange}
+                placeholder="KBM"
+              />
 
-                <ValidationMessages
-                  errors={this.state.formFieldError.golongan}
-                />
-              </div>
-              <div className="form-group form__kondisi">
-                <label htmlFor="kondisi" className="form__label">
-                  Kondisi
-                </label>
-                <input
-                  type="text"
-                  name="kondisi"
-                  id="kondisi"
-                  className="form-control form__input form__input--text form__input__kondisi"
-                  value={this.state.formData.kondisi}
-                  onChange={this.handleChange}
-                  placeholder="Baik"
-                />
+              <ValidationMessages errors={this.state.formFieldError.golongan} />
+            </div>
+            <div className="form-group form__kondisi">
+              <label htmlFor="kondisi" className="form__label">
+                Kondisi
+              </label>
+              <input
+                type="text"
+                name="kondisi"
+                id="kondisi"
+                className="form-control form__input form__input--text form__input__kondisi"
+                value={this.state.formData.kondisi}
+                onChange={this.handleChange}
+                placeholder="Baik"
+              />
 
-                <ValidationMessages
-                  errors={this.state.formFieldError.kondisi}
-                />
+              <ValidationMessages errors={this.state.formFieldError.kondisi} />
+            </div>
+            <div className="form-group form__gambar">
+              <label htmlFor="gambar" className="form__label">
+                Gambar
+              </label>
+              <button
+                className="btn btn-light form__file-prompt-btn"
+                title="Masukkan gambar"
+                onClick={this.handleFilePrompt}
+              >
+                <i className="far fa-image"></i>
+              </button>
+              <input
+                type="file"
+                name="gambar"
+                id="gambar"
+                className="form-control-file form__input form__input--file form__input__gambar"
+                accept="image/*"
+                multiple
+                onChange={this.handleFileChange}
+                ref={this.fileInput}
+              />
+              <div className="form__image-previews row">
+                {this.state.imagePreviews.map(image => (
+                  <ImagePreview
+                    key={image.id}
+                    image={image}
+                    handleRemoveImage={this.handleRemoveImage}
+                  />
+                ))}
               </div>
-              <div className="form-group form__gambar">
-                <label htmlFor="gambar" className="form__label">
-                  Gambar
-                </label>
-                <button
-                  className="btn btn-light form__file-prompt-btn"
-                  title="Masukkan gambar"
-                  onClick={this.handleFilePrompt}
-                >
-                  <i className="far fa-image"></i>
-                </button>
-                <input
-                  type="file"
-                  name="gambar"
-                  id="gambar"
-                  className="form-control-file form__input form__input--file form__input__gambar"
-                  accept="image/*"
-                  multiple
-                  onChange={this.handleFileChange}
-                  ref={this.fileInput}
-                />
-                <div className="form__image-previews row">
-                  {this.state.imagePreviews.map(image => (
-                    <ImagePreview
-                      key={image.id}
-                      image={image}
-                      handleRemoveImage={this.handleRemoveImage}
-                    />
-                  ))}
-                </div>
-              </div>
+            </div>
 
-              <div className="form-group form__controls">
-                <button
-                  className="btn btn-default form__submit-btn"
-                  onClick={this.handleSubmit}
-                >
-                  {this.isEdit ? 'Ubah' : 'Buat'}
-                </button>
-                <button
-                  className="btn btn-default form__cancel-btn"
-                  onClick={this.handleCancel}
-                >
-                  Batalkan
-                </button>
-              </div>
-            </form>
+            <div className="form-group form__controls">
+              <button
+                className="btn btn-default form__submit-btn"
+                onClick={this.handleSubmit}
+              >
+                {this.isEdit ? 'Ubah' : 'Buat'}
+              </button>
+              <button
+                className="btn btn-default form__cancel-btn"
+                onClick={this.handleCancel}
+              >
+                Batalkan
+              </button>
+            </div>
+            {/* </form> */}
           </div>
         </div>
       </main>

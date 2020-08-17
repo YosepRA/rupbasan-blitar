@@ -5,7 +5,7 @@ import { RestDataSource } from '../data/RestDataSource';
 import { HTMLHead } from '../HTMLHead';
 import { ToggleLink } from '../ToggleLink';
 import { AdminBarang } from './AdminBarang';
-import { AdminArtikel } from './AdminArtikel';
+// import { AdminArtikel } from './AdminArtikel';
 import { AkunSetting } from './AkunSetting';
 
 const dataSource = new RestDataSource();
@@ -65,9 +65,9 @@ export class Admin extends Component {
               <AdminBarang {...this.props} />
             </Route>
 
-            <Route path={`/admin/${DataTypes.ARTIKEL}/:page?`}>
+            {/* <Route path={`/admin/${DataTypes.ARTIKEL}/:page?`}>
               <AdminArtikel {...this.props} />
-            </Route>
+            </Route> */}
 
             <Route path={`/admin/${DataTypes.AKUN}`}>
               <AkunSetting {...this.props} />

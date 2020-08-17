@@ -1,0 +1,199 @@
+.page-home {
+  .page-header {
+    margin-bottom: 0;
+  }
+
+  .home-search {
+    position: relative;
+    @include flexCenter();
+    flex-direction: column;
+    height: calc(100vh - 80px);
+    margin-bottom: 2rem;
+    padding: 0;
+    background: url('/static/media/front.png') center/cover no-repeat;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(black, 0.1);
+      content: '';
+    }
+
+    &__title {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1rem;
+      color: white;
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    .search {
+      width: 90%;
+      max-width: 600px;
+    }
+  }
+
+  .profile {
+    margin-bottom: 2rem;
+
+    &__image {
+      background-color: $main-red;
+      text-align: center;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    &__introduction {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background-color: $main-red;
+      color: white;
+
+      &__title,
+      &__name,
+      &__nip {
+        margin-bottom: 0;
+        font-size: 0.8rem;
+      }
+
+      &__title {
+        text-transform: uppercase;
+      }
+    }
+
+    &__video {
+      &__title {
+        margin-bottom: 1rem;
+        color: $main-red;
+        text-align: center;
+
+        h2 {
+          font-size: 2rem;
+        }
+      }
+
+      &__player {
+        video {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .motto {
+    margin-bottom: 2rem;
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 0 0 calc(100% - 30px);
+      padding: 3rem 2rem;
+      border: 1px solid $main-red;
+      border-radius: 10px;
+      background: url('/static/media/indonesia.png') center 30%/220% no-repeat;
+    }
+
+    &__title,
+    &__list,
+    &__headline {
+      margin-bottom: 1.4rem;
+    }
+
+    &__title {
+      color: $main-red;
+    }
+
+    &__list {
+      ol {
+        padding: 0;
+      }
+    }
+
+    &__headline {
+      width: 70%;
+      margin: auto;
+      color: $main-red;
+      font-size: 1.2rem;
+      font-weight: 700;
+
+      p {
+        margin-bottom: 0.3rem;
+      }
+    }
+  }
+
+  .twitter {
+    &__title {
+      margin-bottom: 1rem;
+      color: $main-red;
+    }
+
+    &__snapwidget {
+      width: 100%;
+      height: 624px;
+    }
+  }
+}
+
+/* ======================================================================================================== */
+
+// BREAKPOINTS
+@include breakpoint-up(md) {
+  .page-home {
+    .motto {
+      margin-bottom: 3rem;
+    }
+
+    .twitter {
+      width: 80%;
+
+      &__snapwidget {
+        height: 700px;
+      }
+    }
+  }
+}
+
+@include breakpoint-up(lg) {
+  .page-home {
+    .motto {
+      &__list {
+        ol {
+          font-size: 1.1rem;
+        }
+      }
+
+      &__item:not(:last-child) {
+        margin-bottom: 0.3rem;
+      }
+    }
+
+    .twitter {
+      width: 70%;
+
+      &__snapwidget {
+        height: 800px;
+      }
+    }
+  }
+}
+
+@include breakpoint-up(xl) {
+  .page-home {
+    .twitter {
+      max-width: 720px;
+    }
+  }
+}

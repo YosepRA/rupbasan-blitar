@@ -33,7 +33,7 @@ db.on('open', () => console.log('Successfully connected to the Database.'));
 app.set('port', process.env.PORT || 3500);
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'http://192.168.43.149:3000'],
     optionsSuccessStatus: 200,
     credentials: true,
   })

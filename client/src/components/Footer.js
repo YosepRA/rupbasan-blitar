@@ -17,11 +17,11 @@ export class Footer extends Component {
               >
                 <i className="fas fa-search"></i>Cari barang
               </ToggleLink>
-              <ToggleLink to="/artikel" className="footer-nav__link">
-                Artikel
-              </ToggleLink>
-              <ToggleLink to="/kontak" className="footer-nav__link">
-                Hubungi Kami
+              <ToggleLink
+                to="/admin"
+                className="footer-nav__link footer-nav__link--admin"
+              >
+                Admin
               </ToggleLink>
             </nav>
 

@@ -1,11 +1,11 @@
-import Axios from 'axios';
+import axios from 'axios';
 import { Urls } from './Urls';
 
-Axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true;
 
 export class RestDataSource {
   getRequest(dataType, params) {
-    return this.sendRequest('get', Urls[dataType], params);
+    return this.sendRequest('get', Urls[dataType], params || {});
   }
 
   postRequest(dataType, data) {
@@ -13,6 +13,6 @@ export class RestDataSource {
   }
 
   sendRequest(method, url, params, data) {
-    return Axios.request({ method, url, params, data });
+    return axios.request({ method, url, params, data });
   }
 }

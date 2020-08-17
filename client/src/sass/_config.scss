@@ -46,11 +46,11 @@ $dark-grey: #707070;
 }
 
 @mixin Lato {
-  font-family: 'Lato', 'Open Sans', 'Segoe UI', sans-serif;
+  font-family: 'Lato', 'Open Sans', sans-serif;
 }
 
 @mixin OpenSans {
-  font-family: 'Open Sans', 'Lato', 'Segoe UI', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 @mixin blueButton {
