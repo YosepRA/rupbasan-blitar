@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
+const { isLoggedIn } = require('../middlewares');
 
 // Multer configurations.
 const storage = multer.diskStorage({
@@ -130,7 +131,7 @@ router.get('/count', async (req, res) => {
 });
 
 // Create.
-router.post('/', upload.array('gambar'), async (req, res) => {
+router.post('/', isLoggedIn, upload.array('gambar'), async (req, res) => {
   try {
     const { body, files } = req;
     let trimmedNomorRegister = cleanWhitespace(body.nomorRegister);
@@ -160,7 +161,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Update.
-router.put('/:id', upload.array('gambar'), async (req, res) => {
+router.put('/:id', isLoggedIn, upload.array('gambar'), async (req, res) => {
   try {
     let newData = req.body;
     // "newGambar" is an array of NEW image files that haven't been uploaded to Cloudinary yet.
@@ -204,7 +205,7 @@ router.put('/:id', upload.array('gambar'), async (req, res) => {
 });
 
 // Destroy.
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', isLoggedIn, async (req, res) => {
   try {
     const { id } = req.params;
     // Remove from DB and it will returned the deleted data.

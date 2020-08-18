@@ -13,7 +13,6 @@ require('dotenv').config();
 // Routes.
 const barangRoutes = require('./routes/barang');
 const filtersRoutes = require('./routes/filters');
-const artikelRoutes = require('./routes/artikel');
 const userRoutes = require('./routes/user');
 
 const seedDB = require('./seeds');
@@ -31,13 +30,16 @@ db.on('open', () => console.log('Successfully connected to the Database.'));
 
 // Middlewares and configurations.
 app.set('port', process.env.PORT || 3500);
-app.use(
-  cors({
-    origin: ['http://localhost:3000', 'http://192.168.43.149:3000'],
-    optionsSuccessStatus: 200,
-    credentials: true,
-  })
-);
+
+// For development purposes.
+// app.use(
+//   cors({
+//     origin: ['http://localhost:3000'],
+//     optionsSuccessStatus: 200,
+//     credentials: true,
+//   })
+// );
+
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(
@@ -48,15 +50,15 @@ app.use(
     store: new MongoStore({ mongooseConnection: db }),
   })
 );
+// app.use(function (req, res, next) {
+//   console.log('Session', req.session);
+//   next();
+// });
 app.use(passport.initialize());
 app.use(passport.session());
-app.use((req, res, next) => {
-  console.log('Session:', req.session);
-  return next();
-});
+app.use('/', express.static('../client/build'));
 app.use('/api/barang', barangRoutes);
 app.use('/api/filters', filtersRoutes);
-app.use('/api/artikel', artikelRoutes);
 app.use('/user', userRoutes);
 
 // DB seeding

@@ -4,6 +4,7 @@ const passport = require('../passport');
 const { transporter } = require('../nodemailer');
 const User = require('../models/User');
 const { generateRandomID } = require('../helpers');
+const { isLoggedIn } = require('../middlewares');
 
 router.get('/', async (req, res) => {
   try {
@@ -19,7 +20,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/register', async (req, res) => {
+router.post('/register', isLoggedIn, async (req, res) => {
   try {
     let newUser = await User.create(req.body);
 
@@ -55,7 +56,7 @@ router.get('/logout', async (req, res) => {
 });
 
 // Change password.
-router.post('/change/:username', async (req, res) => {
+router.post('/change/:username', isLoggedIn, async (req, res) => {
   try {
     const { oldPassword, newPassword } = req.body;
     let user = await User.findOne({ username: req.params.username });
