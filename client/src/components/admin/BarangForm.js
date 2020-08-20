@@ -182,7 +182,6 @@ export class BarangForm extends Component {
                 className="form-control form__input form__input--text form__input__nama"
                 value={this.state.formData.nama}
                 onChange={this.handleChange}
-                placeholder="Motor Honda AG-2080-QJ"
               />
 
               <ValidationMessages errors={this.state.formFieldError.nama} />
@@ -198,7 +197,6 @@ export class BarangForm extends Component {
                 className="form-control form__input form__input--text form__input__tindak-pidana"
                 value={this.state.formData.tindakPidana}
                 onChange={this.handleChange}
-                placeholder="Umum"
               />
 
               <ValidationMessages
@@ -216,7 +214,6 @@ export class BarangForm extends Component {
                 className="form-control form__input form__input--text form__input__nomor-register"
                 value={this.state.formData.nomorRegister}
                 onChange={this.handleChange}
-                placeholder="RBB.2/262/V/2006"
               />
 
               <ValidationMessages
@@ -251,7 +248,6 @@ export class BarangForm extends Component {
                 className="form-control form__input form__input--text form__input__instansi"
                 value={this.state.formData.instansi}
                 onChange={this.handleChange}
-                placeholder="Polres Blitar"
               />
 
               <ValidationMessages errors={this.state.formFieldError.instansi} />
@@ -283,7 +279,6 @@ export class BarangForm extends Component {
                 className="form-control form__input form__input--text form__input__satuan"
                 value={this.state.formData.satuan}
                 onChange={this.handleChange}
-                placeholder="Buah"
               />
 
               <ValidationMessages errors={this.state.formFieldError.satuan} />
@@ -299,7 +294,6 @@ export class BarangForm extends Component {
                 className="form-control form__input form__input--text form__input__klasifikasi"
                 value={this.state.formData.klasifikasi}
                 onChange={this.handleChange}
-                placeholder="Umum"
               />
 
               <ValidationMessages
@@ -317,7 +311,6 @@ export class BarangForm extends Component {
                 className="form-control form__input form__input--text form__input__golongan"
                 value={this.state.formData.golongan}
                 onChange={this.handleChange}
-                placeholder="KBM"
               />
 
               <ValidationMessages errors={this.state.formFieldError.golongan} />
@@ -333,7 +326,6 @@ export class BarangForm extends Component {
                 className="form-control form__input form__input--text form__input__kondisi"
                 value={this.state.formData.kondisi}
                 onChange={this.handleChange}
-                placeholder="Baik"
               />
 
               <ValidationMessages errors={this.state.formFieldError.kondisi} />

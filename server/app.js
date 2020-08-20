@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const session = require('express-session');
 const passport = require('./passport');
 const MongoStore = require('connect-mongo')(session);
+const history = require('connect-history-api-fallback');
 
 const app = express();
 
@@ -32,13 +33,13 @@ db.on('open', () => console.log('Successfully connected to the Database.'));
 app.set('port', process.env.PORT || 3500);
 
 // For development purposes.
-// app.use(
-//   cors({
-//     origin: ['http://localhost:3000'],
-//     optionsSuccessStatus: 200,
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: ['http://localhost:3000'],
+    optionsSuccessStatus: 200,
+    credentials: true,
+  })
+);
 
 app.use(morgan('dev'));
 app.use(express.json());
@@ -48,14 +49,19 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: db }),
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
   })
 );
-// app.use(function (req, res, next) {
-//   console.log('Session', req.session);
-//   next();
-// });
+
+// For development purposes.
+app.use(function (req, res, next) {
+  console.log('Session', req.session);
+  next();
+});
+
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(history());
 app.use('/', express.static('../client/build'));
 app.use('/api/barang', barangRoutes);
 app.use('/api/filters', filtersRoutes);

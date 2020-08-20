@@ -15,7 +15,7 @@ export class Footer extends Component {
                 to="/barang"
                 className="footer-nav__link footer-nav__link--barang"
               >
-                <i className="fas fa-search"></i>Cari barang
+                Cari barang
               </ToggleLink>
               <ToggleLink
                 to="/admin"
