@@ -1,8 +1,10 @@
 .page-reset {
   .form {
     @include flexCenter();
+    flex-direction: column;
 
-    form {
+    &__error,
+    &__reset-form {
       width: 100%;
       max-width: 600px;
     }

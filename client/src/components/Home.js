@@ -1,5 +1,6 @@
 /* eslint-disable react/display-name */
 import React, { Component } from 'react';
+import Slider from 'react-slick';
 import { connectorWrapper } from './data/connectorWrapper';
 import { HTMLHead } from './HTMLHead';
 import { Search } from './Search';
@@ -9,39 +10,65 @@ import videoProfil from '../assets/video_profil.mp4';
 export const Home = connectorWrapper(
   class extends Component {
     render() {
+      let slickConfig = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 5000,
+      };
+
       return (
         <main className="main-container">
           <HTMLHead title="Rumah Penyimpanan Benda Sitaan Negara Kelas II Blitar" />
 
           <section className="home-search container-fluid">
-            <header className="home-search__title">
-              <h1>Cari Barangmu Disini</h1>
-            </header>
+            <Slider {...slickConfig} className="home-search__slider">
+              <div className="home-search__slider-item home-search__slider-item--front"></div>
+              <div className="home-search__slider-item home-search__slider-item--pegawai"></div>
+              <div className="home-search__slider-item home-search__slider-item--alun-blitar"></div>
+            </Slider>
 
-            <Search {...this.props} />
+            <div className="home-search__search">
+              <header className="home-search__title">
+                <h1>Cari Barangmu Disini</h1>
+              </header>
+
+              <Search {...this.props} />
+            </div>
           </section>
 
           <section className="profile container">
             <div className="row justify-content-center">
               <div className="profile__atasan col-12 col-md-4 col-lg-3">
                 <div className="row justify-content-center">
+                  <div className="profile__welcome col-8 col-md-12">
+                    <h3>Selamat Datang</h3>
+                  </div>
                   <div className="profile__image col-8 col-md-12">
                     <img src={bos} alt="Pimpinan Rupbasan Blitar" />
                   </div>
                   <div className="profile__introduction col-8 col-md-12">
-                    <p className="profile__introduction__intro">
-                      Selamat datang di website Rumah Penyimpanan Benda Sitaan
-                      Negara Kelas II Blitar
-                    </p>
-                    <p className="profile__introduction__title">
-                      Kepala Rupbasan Blitar
-                    </p>
-                    <p className="profile__introduction__name">
-                      Soedarto, SH.,MH.
-                    </p>
-                    <p className="profile__introduction__nip">
-                      NIP. 196805311990031002
-                    </p>
+                    <div className="profile__introduction__intro">
+                      <p>
+                        Selamat datang di website Rumah Penyimpanan Benda Sitaan
+                        Negara Kelas II Blitar
+                      </p>
+                    </div>
+                    <div className="profile__introduction__identity">
+                      <p className="profile__introduction__title">
+                        Kepala Rupbasan Blitar
+                      </p>
+                      <p className="profile__introduction__name">
+                        Soedarto, SH.,MH.
+                      </p>
+                      <p className="profile__introduction__nip">
+                        NIP. 196805311990031002
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -84,15 +111,20 @@ export const Home = connectorWrapper(
             </div>
           </section>
 
-          <section className="twitter container">
-            <header className="twitter__title">
-              <h3>Twitter @RupbasanBlitar</h3>
+          <section className="social-media twitter container">
+            <header className="social-media__title twitter__title">
+              <h3>
+                Twitter{' '}
+                <span className="social-media__username">
+                  (@RupbasanBlitar)
+                </span>
+              </h3>
             </header>
 
-            <div className="twitter__feed">
+            <div className="social-media__feed twitter__feed">
               <iframe
                 src="https://snapwidget.com/embed/862848"
-                className="twitter__snapwidget snapwidget-widget"
+                className="social-media__snapwidget twitter__snapwidget snapwidget-widget"
                 title="Twitter Rupbasan Blitar"
                 allowtransparency="true"
                 frameBorder="0"

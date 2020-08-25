@@ -39,7 +39,7 @@ export class BarangGetter extends Component {
     let newParams = {
       search: this.props.searchKey || '',
       sort: this.props.sort || '-tanggalRegister',
-      pageSize: this.props.pageSize || 5,
+      pageSize: this.props.pageSize || 10,
       page: this.props.match.params.page || 1,
       ...activeFilters,
       instansi:

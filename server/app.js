@@ -16,7 +16,8 @@ const barangRoutes = require('./routes/barang');
 const filtersRoutes = require('./routes/filters');
 const userRoutes = require('./routes/user');
 
-const seedDB = require('./seeds');
+// const seedDB = require('./seeds');
+// const { adaptCSVImport } = require('./adaptCSVImport');
 
 // DB setup.
 mongoose.connect(process.env.MONGODB_URL, {
@@ -69,6 +70,9 @@ app.use('/user', userRoutes);
 
 // DB seeding
 // seedDB();
+
+// Adapt imported CSV files.
+// adaptCSVImport().then(() => console.log('Finished adapting CSV imports.'));
 
 app.listen(app.get('port'), () => {
   console.log(`Server is listening on port ${app.get('port')}...`);

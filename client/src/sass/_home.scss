@@ -10,18 +10,91 @@
     height: calc(100vh - 80px);
     margin-bottom: 2rem;
     padding: 0;
-    background: url('/static/media/front.png') center/cover no-repeat;
+    overflow: hidden;
 
-    &::before {
+    &__slider {
+      width: 100%;
+      height: 100%;
+
+      &-item {
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        &--front {
+          background-image: url('/static/media/front.png');
+        }
+
+        &--pegawai {
+          background-image: url('/static/media/pegawai.jpeg');
+        }
+
+        &--alun-blitar {
+          background-image: url('/static/media/alun-blitar.jpg');
+        }
+      }
+    }
+
+    .slick-list {
+      height: 100%;
+    }
+
+    .slick-track {
+      height: 100%;
+    }
+
+    .slick-slide div {
+      height: 100%;
+    }
+
+    .slick-dots {
+      position: relative;
+      top: -70px;
+      left: 0;
+      z-index: 2;
+
+      li {
+        button {
+          &::before {
+            font-size: 16px;
+            color: white;
+            opacity: 0.4;
+          }
+        }
+
+        &.slick-active {
+          button {
+            &::before {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+
+    &__search {
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 0;
-      display: block;
+      z-index: 1;
+      @include flexCenter();
+      flex-direction: column;
       width: 100%;
       height: 100%;
-      background-color: rgba(black, 0.1);
-      content: '';
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(black, 0.1);
+        content: '';
+      }
     }
 
     &__title {
@@ -44,6 +117,19 @@
   .profile {
     margin-bottom: 2rem;
 
+    &__welcome {
+      padding: 0.5rem;
+      background-color: $main-blue;
+      color: white;
+      text-align: center;
+      text-transform: uppercase;
+
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+      }
+    }
+
     &__image {
       background-color: $main-red;
       text-align: center;
@@ -57,8 +143,18 @@
     &__introduction {
       margin-bottom: 2rem;
       padding: 1rem;
-      background-color: $main-red;
+      background-color: $main-blue;
       color: white;
+
+      &__intro {
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid white;
+
+        p {
+          margin-bottom: 0;
+        }
+      }
 
       &__title,
       &__name,
@@ -134,10 +230,14 @@
     }
   }
 
-  .twitter {
+  .social-media {
     &__title {
       margin-bottom: 1rem;
       color: $main-red;
+    }
+
+    &__username {
+      font-weight: 300;
     }
 
     &__snapwidget {

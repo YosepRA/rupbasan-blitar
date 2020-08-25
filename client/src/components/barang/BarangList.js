@@ -3,8 +3,19 @@ import { Link } from 'react-router-dom';
 import { Pagination } from '../Pagination';
 import format from 'date-format';
 import slugify from 'slugify';
+import defaultPicture from '../../assets/default.png';
 
 export class BarangList extends Component {
+  getGambar(nama, gambar) {
+    return (
+      <img
+        src={gambar.length > 0 ? gambar[0].url : defaultPicture}
+        className="card-img-top"
+        alt={nama}
+      />
+    );
+  }
+
   render() {
     return (
       <Fragment>
@@ -29,11 +40,12 @@ export class BarangList extends Component {
                         to={`/barang/detail/${_id}/${slugify(nama)}`}
                         className="barang__image__link"
                       >
-                        <img
+                        {/* <img
                           src={gambar.length > 0 ? gambar[0].url : ''}
                           className="card-img-top"
                           alt={nama}
-                        />
+                        /> */}
+                        {this.getGambar(nama, gambar)}
                       </Link>
                     </div>
                     <div className="card-body barang__info">

@@ -3,13 +3,28 @@ import { HTMLHead } from '../HTMLHead';
 import Slider from 'react-slick';
 import { GambarCarousel } from './GambarCarousel';
 import { BarangDataRow } from './BarangDataRow';
+import defaultPicture from '../../assets/default.png';
 
 export class BarangDetail extends Component {
   getGambar(className) {
     const { nama, gambar } = this.props.barangDetail;
-    return gambar.map(({ url }) => (
-      <GambarCarousel key={nama} className={className} url={url} nama={nama} />
-    ));
+    return gambar.length > 0 ? (
+      gambar.map(({ url }) => (
+        <GambarCarousel
+          key={nama}
+          className={className}
+          url={url}
+          nama={nama}
+        />
+      ))
+    ) : (
+      <GambarCarousel
+        key={nama}
+        className={className}
+        url={defaultPicture}
+        nama={nama}
+      />
+    );
   }
 
   getBarangData() {

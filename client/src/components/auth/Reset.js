@@ -61,16 +61,19 @@ export const Reset = connectorWrapper(
             <h1>Reset Password</h1>
           </header>
 
-          {this.state.formError && (
-            <div className="form__error">
-              <div className="alert alert-danger" role="alert">
-                {this.state.formError}
-              </div>
-            </div>
-          )}
-
           <section className="form">
-            <form onSubmit={this.handleSubmit} noValidate>
+            {this.state.formError && (
+              <div className="form__error">
+                <div className="alert alert-danger" role="alert">
+                  {this.state.formError}
+                </div>
+              </div>
+            )}
+            <form
+              className="form__reset-form"
+              onSubmit={this.handleSubmit}
+              noValidate
+            >
               <div className="form-group form__reset-email">
                 <label htmlFor="reset-email" className="form__label">
                   Email

@@ -1,10 +1,28 @@
-@include breakpoint-up(md) {
+@include breakpoint-up(sm) {
   .page-header {
     .main-nav {
       &__logo {
-        height: 90%;
+        width: 300px;
       }
 
+      &__menu {
+        &-list {
+          font-size: 1.4rem;
+        }
+      }
+
+      .dropdown {
+        &__item {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint-up(md) {
+  .page-header {
+    .main-nav {
       &__menu {
         width: 60%;
       }
