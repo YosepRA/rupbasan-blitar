@@ -30,6 +30,8 @@ export const Home = connectorWrapper(
               <div className="home-search__slider-item home-search__slider-item--front"></div>
               <div className="home-search__slider-item home-search__slider-item--pegawai"></div>
               <div className="home-search__slider-item home-search__slider-item--alun-blitar"></div>
+              <div className="home-search__slider-item home-search__slider-item--bung-karno"></div>
+              <div className="home-search__slider-item home-search__slider-item--gong"></div>
             </Slider>
 
             <div className="home-search__search">

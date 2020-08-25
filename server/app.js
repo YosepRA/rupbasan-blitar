@@ -16,7 +16,7 @@ const barangRoutes = require('./routes/barang');
 const filtersRoutes = require('./routes/filters');
 const userRoutes = require('./routes/user');
 
-// const seedDB = require('./seeds');
+const seedDB = require('./seeds');
 // const { adaptCSVImport } = require('./adaptCSVImport');
 
 // DB setup.
