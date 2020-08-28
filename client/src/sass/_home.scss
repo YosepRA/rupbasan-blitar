@@ -27,8 +27,19 @@
           background-image: url('/static/media/front.png');
         }
 
+        &--front-02 {
+          background-image: url('/static/media/front-02.jpeg');
+          background-position: center 30%;
+        }
+
+        &--front-03 {
+          background-image: url('/static/media/front-03.jpeg');
+          background-position: center 80%;
+        }
+
         &--pegawai {
           background-image: url('/static/media/pegawai.jpeg');
+          background-position: center 80%;
         }
 
         &--alun-blitar {
@@ -218,6 +229,12 @@
 
     &__title {
       color: $main-red;
+      text-align: center;
+      text-transform: uppercase;
+
+      h3 {
+        font-size: 1.6rem;
+      }
     }
 
     &__list {
@@ -240,6 +257,8 @@
   }
 
   .social-media {
+    max-width: 960px;
+
     &__title {
       margin-bottom: 1rem;
       color: $main-red;
@@ -259,17 +278,25 @@
 /* ======================================================================================================== */
 
 // BREAKPOINTS
+@include breakpoint-up(sm) {
+  .page-home {
+    .social-media {
+      &__snapwidget {
+        height: 760px;
+      }
+    }
+  }
+}
+
 @include breakpoint-up(md) {
   .page-home {
     .motto {
       margin-bottom: 3rem;
     }
 
-    .twitter {
-      width: 80%;
-
+    .social-media {
       &__snapwidget {
-        height: 700px;
+        height: 880px;
       }
     }
   }
@@ -290,10 +317,8 @@
     }
 
     .twitter {
-      width: 70%;
-
       &__snapwidget {
-        height: 800px;
+        height: 920px;
       }
     }
   }
@@ -301,8 +326,10 @@
 
 @include breakpoint-up(xl) {
   .page-home {
-    .twitter {
-      max-width: 720px;
+    .motto {
+      &__headline {
+        width: 60%;
+      }
     }
   }
 }

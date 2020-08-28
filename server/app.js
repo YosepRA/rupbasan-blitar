@@ -16,7 +16,7 @@ const barangRoutes = require('./routes/barang');
 const filtersRoutes = require('./routes/filters');
 const userRoutes = require('./routes/user');
 
-const seedDB = require('./seeds');
+// const seedDB = require('./seeds');
 // const { adaptCSVImport } = require('./adaptCSVImport');
 
 // DB setup.
@@ -41,8 +41,8 @@ app.use(
     credentials: true,
   })
 );
-
 app.use(morgan('dev'));
+
 app.use(express.json());
 app.use(
   session({
@@ -55,10 +55,10 @@ app.use(
 );
 
 // For development purposes.
-app.use(function (req, res, next) {
-  console.log('Session', req.session);
-  next();
-});
+// app.use(function (req, res, next) {
+//   console.log('Session', req.session);
+//   next();
+// });
 
 app.use(passport.initialize());
 app.use(passport.session());
